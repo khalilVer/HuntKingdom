@@ -273,9 +273,9 @@ ol {
 .inner-header .advanced-search1 {
 	height: 50px;
 	border: 1px solid #3b3b3b;
-	position: fixed;
+	position: relative;
 	top: 35px;
-	right: 100px;
+	left: 180px;
 }
 
 .inner-header .advanced-search1 .category-btn {
