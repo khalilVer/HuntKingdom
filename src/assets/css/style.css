@@ -268,6 +268,32 @@ ol {
   Header
 -----------------------*/
 
+
+
+.inner-header .advanced-search1 {
+	height: 50px;
+	border: 1px solid #3b3b3b;
+	position: fixed;
+	top: 35px;
+	right: 100px;
+}
+
+.inner-header .advanced-search1 .category-btn {
+	width: 100%;
+	float: left;
+	border: none;
+	background-color: #252525;
+	padding-left: 23px;
+	padding-top: 11px;
+	padding-bottom: 13px;
+	padding-right: 60px;
+	font-size: 16px ;
+	color: white;
+	position: relative;
+}
+
+
+
 .ht-right .lan-selector {
 	max-width: 142px;
 	cursor: pointer;
