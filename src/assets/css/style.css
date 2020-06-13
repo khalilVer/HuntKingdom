@@ -275,7 +275,7 @@ ol {
 	border: 1px solid #3b3b3b;
 	position: relative;
 	top: 35px;
-	left: 180px;
+	left: 250px;
 }
 
 .inner-header .advanced-search1 .category-btn {
@@ -283,10 +283,9 @@ ol {
 	float: left;
 	border: none;
 	background-color: #252525;
-	padding-left: 23px;
 	padding-top: 11px;
 	padding-bottom: 13px;
-	padding-right: 60px;
+
 	font-size: 16px ;
 	color: white;
 	position: relative;
