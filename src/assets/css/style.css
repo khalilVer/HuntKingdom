@@ -440,10 +440,57 @@ ol {
 .background{
 	background-image: url('../img/hunting-background.jpg');
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+	background-position: center ;
+	background-size: cover ;
 
 
+}
+
+
+.heart-icon .favoris-text {
+	visibility: hidden;
+	width: 120px;
+	background-color: #252525;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.heart-icon:hover .favoris-text {
+	visibility: visible;
+}
+
+
+.cart-icon .favoris-text {
+	visibility: hidden;
+	width: 120px;
+	background-color: #252525;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 50%;
+	margin-left: -60px;
+}
+
+.cart-icon:hover .favoris-text {
+	visibility: visible;
+}
+.heart {
+	color: #fff;
 }
 
 
@@ -462,6 +509,7 @@ ol {
 
 .inner-header .advanced-search {
 	height: 50px;
+	width: 550px;
 	border: 1px solid #3b3b3b;
 }
 
