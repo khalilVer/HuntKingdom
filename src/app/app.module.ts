@@ -9,6 +9,19 @@ import { AdminOfficeComponent } from './admin-office/admin-office.component';
 import { AdminOfficeNavbarComponent } from './admin-office-navbar/admin-office-navbar.component';
 import { AdminOfficeSidebarComponent } from './admin-office-sidebar/admin-office-sidebar.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { ShopProductsComponent } from './shop-products/shop-products.component';
+import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { FavorisProductsComponent } from './favoris-products/favoris-products.component';
+import { PanierProductsComponent } from './panier-products/panier-products.component';
+
+const ROUTES: Routes = [
+    {path: 'shop', component: ShopProductsComponent},
+    {path: 'home', component: ToolComponent},
+    {path: 'favoris', component: FavorisProductsComponent},
+    {path: 'panier', component: PanierProductsComponent}
+];
 
 @NgModule({
   declarations: [
@@ -19,10 +32,16 @@ import { DashbordComponent } from './dashbord/dashbord.component';
     AdminOfficeComponent,
     AdminOfficeNavbarComponent,
     AdminOfficeSidebarComponent,
-    DashbordComponent
+    DashbordComponent,
+    ShopProductsComponent,
+    FavorisProductsComponent,
+    PanierProductsComponent
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      FormsModule,
+      RouterModule.forRoot(ROUTES),
+      HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
