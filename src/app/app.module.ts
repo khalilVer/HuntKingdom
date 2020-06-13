@@ -15,12 +15,17 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { FavorisProductsComponent } from './favoris-products/favoris-products.component';
 import { PanierProductsComponent } from './panier-products/panier-products.component';
+import { ShopProductsSidebarComponent } from './shop-products-sidebar/shop-products-sidebar.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopProductsComponent},
     {path: 'home', component: ToolComponent},
     {path: 'favoris', component: FavorisProductsComponent},
-    {path: 'panier', component: PanierProductsComponent}
+    {path: 'panier', component: PanierProductsComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
@@ -35,7 +40,10 @@ const ROUTES: Routes = [
     DashbordComponent,
     ShopProductsComponent,
     FavorisProductsComponent,
-    PanierProductsComponent
+    PanierProductsComponent,
+    ShopProductsSidebarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
       BrowserModule,
