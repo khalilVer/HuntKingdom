@@ -447,7 +447,7 @@ ol {
 }
 
 body{
-	background-color: lightgrey;
+	background-color: whitesmoke;
 }
 
 .single-hero-items{
@@ -914,10 +914,15 @@ body{
   Hero Section
 -----------------------*/
 
-.hero-items .single-hero-items {
 
+.hero-items{
+	position: relative;
+	top: 40px;
+}
+
+.hero-items .single-hero-items {
+	
 	height: 400px;
-	padding-top: 210px;
 }
 
 .hero-items .single-hero-items span {
