@@ -18,6 +18,9 @@ import { PanierProductsComponent } from './panier-products/panier-products.compo
 import { ShopProductsSidebarComponent } from './shop-products-sidebar/shop-products-sidebar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { BuySellComponent } from './buy-sell/buy-sell.component';
+import { BuyComponent } from './buy/buy.component';
+import { SellComponent } from './sell/sell.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopProductsComponent},
@@ -25,7 +28,10 @@ const ROUTES: Routes = [
     {path: 'favoris', component: FavorisProductsComponent},
     {path: 'panier', component: PanierProductsComponent},
     {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent}
+    {path: 'register', component: RegisterComponent},
+    {path: 'buysell', component: BuySellComponent},
+    {path: 'buy', component: BuyComponent},
+    {path: 'sell', component: SellComponent}
 ];
 
 @NgModule({
@@ -43,7 +49,10 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     ShopProductsSidebarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BuySellComponent,
+    BuyComponent,
+    SellComponent
   ],
   imports: [
       BrowserModule,
