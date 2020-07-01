@@ -21,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
 import { BuySellComponent } from './buy-sell/buy-sell.component';
 import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
+import { EventComponent } from './event/event.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopProductsComponent},
@@ -31,7 +32,9 @@ const ROUTES: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'buysell', component: BuySellComponent},
     {path: 'buy', component: BuyComponent},
-    {path: 'sell', component: SellComponent}
+    {path: 'sell', component: SellComponent},
+    {path: 'event', component: EventComponent}
+
 ];
 
 @NgModule({
@@ -52,7 +55,8 @@ const ROUTES: Routes = [
     RegisterComponent,
     BuySellComponent,
     BuyComponent,
-    SellComponent
+    SellComponent,
+    EventComponent
   ],
   imports: [
       BrowserModule,
