@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminOfficeNavbarComponent } from './admin-office-navbar.component';
+import { BuySellComponent } from './buy-sell.component';
 
-describe('AdminOfficeNavbarComponent', () => {
-  let component: AdminOfficeNavbarComponent;
-  let fixture: ComponentFixture<AdminOfficeNavbarComponent>;
+describe('BuySellComponent', () => {
+  let component: BuySellComponent;
+  let fixture: ComponentFixture<BuySellComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminOfficeNavbarComponent ]
+      declarations: [ BuySellComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminOfficeNavbarComponent);
+    fixture = TestBed.createComponent(BuySellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
