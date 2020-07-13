@@ -1,1 +1,75 @@
-<p>panier-products works!</p>
+
+<div class="container">
+
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a routerLink="/home"><i class="fa fa-home"></i> Home</a>
+                        <span>Panier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                        <thead>
+                                        <tr>
+                                            <th>LIBELLE</th>
+                                            <th>PRIX</th>
+                                            <th>CATEGORIE</th>
+                                            <th>DESCRIPTION</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody >
+                                        <tr *ngFor="let p of pannier">
+                                            <td>{{p.libelle}}</td>
+                                            <td>{{p.prix}}</td>
+                                            <td>{{p.categorie}}</td>
+                                            <td>{{p.description}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                            </div>
+                           <br>
+                            <div class="col-md-3">
+                                <b>Quantité Totale : </b>
+                                <span> {{quantiteTotal}} </span>
+                            </div>
+                            <br>
+                            <div class="col-md-3">
+                                <b>Prix Total : </b>
+                                <span> {{prixTotal}} </span>
+                            </div>
+                            <br>
+                            <div class="col-md-3">
+                                <b>Date Achat : </b>
+                                <span> {{dateAchat}} </span>
+                            </div>
+                            <br>
+                            <button class="btn btn-primary waves-effect" >VALIDER</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+
+
+
+</div>
+
