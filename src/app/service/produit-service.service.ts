@@ -10,6 +10,7 @@ import {catchError, retry} from 'rxjs/operators';
 export class ProduitServiceService {
     // Define API
     apiURL = 'pi/hunterskingdom/web/app_dev.php/api';
+    pannier: Produit[] = [];
 
     // Http Options
     httpOptions = {
@@ -33,6 +34,12 @@ export class ProduitServiceService {
                 catchError(this.handleError)
             );
     }
+    ajouterProduitPannier(produit) {
+        this.pannier.push(produit);
+    }
+    getPannier(): Array<Produit> {
+        return this.pannier;
+    }
     // Error handling
     handleError(error) {
         let errorMessage = '';
@@ -46,5 +53,4 @@ export class ProduitServiceService {
         window.alert(errorMessage);
         return throwError(errorMessage);
     }
-
 }

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProduitServiceService} from '../service/produit-service.service';
+import {Produit} from '../Model/produit';
 
 @Component({
   selector: 'app-shop-comp',
@@ -7,6 +8,7 @@ import {ProduitServiceService} from '../service/produit-service.service';
   styleUrls: ['./shop-comp.component.css']
 })
 export class ShopCompComponent implements OnInit {
+
 
     Produits: any = [];
     constructor(private produitService: ProduitServiceService) { }
@@ -19,5 +21,7 @@ export class ShopCompComponent implements OnInit {
             this.Produits = data;
         });
     }
-
+    ajouterPannier(produit) {
+        this.produitService.ajouterProduitPannier(produit);
+    }
 }
