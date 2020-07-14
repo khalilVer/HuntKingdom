@@ -27,6 +27,13 @@ export class CommandeServiceService {
                 catchError(this.handleError)
             );
     }
+    getLastCommande(id): Observable<Commande> {
+        return this.http.get<Commande>(this.apiURL + '/commande')
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
     createCommande(commande): Observable<Commande> {
         return this.http.post<Commande>(this.apiURL + '/commandes/new', JSON.stringify(commande), this.httpOptions)
             .pipe(

@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./panier-products.component.css']
 })
 export class PanierProductsComponent implements OnInit {
+    lastCommande: any;
     pannier: Array<Produit> = [];
     prixTotal: number = 0;
     quantiteTotal: number = 0;
@@ -18,6 +19,9 @@ export class PanierProductsComponent implements OnInit {
     constructor(private produitService: ProduitServiceService, private commandeService: CommandeServiceService, public router: Router) { }
   ngOnInit() {
       this.loadPannier();
+      this.commandeService.getLastCommande(0).subscribe((data: {}) => {
+          this.lastCommande = data;
+      });
   }
 
     // Get pannier
@@ -38,7 +42,7 @@ export class PanierProductsComponent implements OnInit {
 
     addCommande() {
         let commande: Commande = new Commande();
-        commande.numero_commande = 'CMD00030';
+        commande.numero_commande = this.prepareCmdNum();
         commande.date_achat = this.dateAchat;
         commande.products = this.pannier;
         console.log(...this.pannier);
@@ -65,4 +69,15 @@ export class PanierProductsComponent implements OnInit {
         this.prixTotal = this.prixTotal - prix;
     }
 
+    prepareCmdNum(): string {
+        let cmd: string;
+        cmd = this.lastCommande.numero_commande;
+        let prefix = cmd.substr(0, 3);
+        let sufix = cmd.substr(4, cmd.length);
+        let i = parseInt(sufix, 0) + 1;
+        sufix = (i < 10 ? '0000' : (i < 100 ? '000' : (i < 1000 ? '00' : (i < 10000 ? '0' : '') ))) + i ;
+        let cmdFinal: string = prefix + sufix ;
+        console.log(cmdFinal);
+        return cmdFinal ;
+    }
 }

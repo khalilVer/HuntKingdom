@@ -62,7 +62,7 @@
                             </div>
                             <br>
 
-                            <button style="margin-right:800px;" class=" btn btn-success waves-effect" (click)="addCommande()">ACHATER</button>
+                            <button style="margin-right:800px;" class=" btn btn-success waves-effect"  [disabled]="quantiteTotal < 1" (click)="addCommande()">ACHATER</button>
                             <button class="btn btn-dark waves-effect" routerLink="/mesCommandes">MES COMMANDES</button>
 
             </div>
