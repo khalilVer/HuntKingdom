@@ -17,10 +17,11 @@ import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
 import { EventComponent } from './event/event.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
+import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
-    {path: 'home', component: ToolComponent},
+    {path: '', component: ToolComponent},
     {path: 'favoris', component: FavorisProductsComponent},
     {path: 'panier', component: PanierProductsComponent},
     {path: 'login', component: LoginComponent},
@@ -28,7 +29,8 @@ const ROUTES: Routes = [
     {path: 'buysell', component: BuySellComponent},
     {path: 'buy', component: BuyComponent},
     {path: 'sell', component: SellComponent},
-    {path: 'event', component: EventComponent}
+    {path: 'event', component: EventComponent},
+    {path: 'mesCommandes', component: ListePanierCompComponent}
 
 ];
 
@@ -46,7 +48,8 @@ const ROUTES: Routes = [
     BuyComponent,
     SellComponent,
     EventComponent,
-    ShopCompComponent
+    ShopCompComponent,
+    ListePanierCompComponent
   ],
   imports: [
       BrowserModule,

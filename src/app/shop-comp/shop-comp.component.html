@@ -24,14 +24,12 @@
                 <div class="product-item">
                     <div class="pi-pic">
                         <img src="{{p.image}}" alt="">
-                        <div class="sale pp-sale"></div>
+                        <div class="sale pp-sale"> <button class="btn waves-effect" (click)="ajouterPannier(p)"><i class="fa fa-shopping-cart heart fa-md"></i></button></div>
                         <div class="icon">
                             <i class="icon_heart_alt"></i>
                         </div>
                         <ul>
-                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                            <li class="quick-view"><a href="#">{{p.description}}</a></li>
-                            <li class="w-icon"><button class="btn btn-danger waves-effect" (click)="ajouterPannier(p)"><i class="icon_bag_alt"></i></button></li>
+                            <li class="quick-view"><a>{{p.description}}</a></li>
                         </ul>
                     </div>
                     <div class="pi-text">
