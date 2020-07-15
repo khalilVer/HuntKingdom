@@ -23,8 +23,7 @@ export class FavorisService {
     getFavorisByUser(id): Observable<Favoris> {
         return this.http.get<Favoris>(this.apiURL + '/favoris/' + id + '/products')
             .pipe(
-                retry(1),
-                catchError(this.handleError)
+                retry(1)
             );
     }
     createFavoris(favoris): Observable<Favoris> {
