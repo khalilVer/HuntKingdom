@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Commande} from '../Model/commande';
+import {Favoris} from '../Model/favoris';
 
 @Injectable({
   providedIn: 'root'
@@ -20,13 +21,6 @@ export class CommandeServiceService {
     };
 
     constructor(private http: HttpClient) { }
-    getCommandes(): Observable<Commande> {
-        return this.http.get<Commande>( this.apiURL + '/commandes')
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
     getLastCommande(id): Observable<Commande> {
         return this.http.get<Commande>(this.apiURL + '/commande')
             .pipe(
@@ -41,24 +35,8 @@ export class CommandeServiceService {
                 catchError(this.handleError)
             );
     }
-    deleteCommande(id) {
-        return this.http.delete<Commande>(this.apiURL + '/commandes/' + id + '/delete', this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-
-    getCommande(id): Observable<Commande> {
-        return this.http.get<Commande>(this.apiURL + '/commandes/' + id)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-
-    validateCommande(id, commande): Observable<Commande> {
-        return this.http.put<Commande>(this.apiURL + '/commandes/' + id + '/validate' , JSON.stringify(commande), this.httpOptions)
+    getCommandesByUser(id): Observable<Commande> {
+        return this.http.get<Commande>(this.apiURL + '/' + id + '/mescommandes')
             .pipe(
                 retry(1),
                 catchError(this.handleError)

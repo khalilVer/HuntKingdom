@@ -21,7 +21,7 @@ import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
-    {path: '', component: ToolComponent},
+    {path: 'home', component: ToolComponent},
     {path: 'favoris', component: FavorisProductsComponent},
     {path: 'panier', component: PanierProductsComponent},
     {path: 'login', component: LoginComponent},
@@ -54,7 +54,7 @@ const ROUTES: Routes = [
   imports: [
       BrowserModule,
       FormsModule,
-      RouterModule.forRoot(ROUTES),
+      RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule
   ],
   providers: [],
