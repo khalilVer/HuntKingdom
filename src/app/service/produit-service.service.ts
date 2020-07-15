@@ -21,7 +21,7 @@ export class ProduitServiceService {
 
     constructor(private http: HttpClient) { }
     getProducts(): Observable<Produit> {
-        return this.http.get<Produit>( this.apiURL + '/produits')
+        return this.http.get<Produit>( this.apiURL + '/products/sell')
             .pipe(
                 retry(1),
                 catchError(this.handleError)
