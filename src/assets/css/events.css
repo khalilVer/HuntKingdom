@@ -933,7 +933,7 @@ section
 }
 .event_location
 {
-	font-size: 14px;
+	font-size: 30px;
 	font-weight: 500;
 	color: #2b88cb;
 	margin-top: 1px;
@@ -942,37 +942,7 @@ section
 {
 	margin-top: 39px;
 }
-.event_speakers
-{
-	margin-top: 45px;
-}
-.event_speaker:not(:last-child)
-{
-	margin-bottom: 27px;
-}
-.event_speaker_image
-{
-	width: 48px;
-	height: 48px;
-	border-radius: 50%;
-	overflow: hidden;
-}
-.event_speaker_content
-{
-	padding-left: 22px;
-}
-.event_speaker_name
-{
-	font-size: 14px;
-	font-weight: 500;
-	color: #4c4c4c;
-}
-.event_speaker_title
-{
-	font-size: 12px;
-	font-weight: 500;
-	color: #888888;
-}
+
 .event_buttons
 {
 	margin-top: 48px;
