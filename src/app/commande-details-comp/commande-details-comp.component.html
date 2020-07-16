@@ -1,0 +1,60 @@
+
+
+<div class="container">
+
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a routerLink="/mesCommandes"><i class="fa fa-home"></i> Mes Commandes</a>
+                        <span>Commande Details</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <br>
+        <div class="col-md-3">
+            <b>Quantité Totale : </b>
+            <span> {{commandeData.quantite_total}} </span>
+        </div>
+        <br>
+        <div class="col-md-3">
+            <b>Prix Total : </b>
+            <span> {{commandeData.prix_total}} </span>
+        </div>
+        <br>
+        <div class="col-md-3">
+            <b>Date Achat : </b>
+            <span> {{commandeData.date_achat}} </span>
+        </div>
+        <br>
+    <div class="product-list">
+        <br>
+        <div class="row">
+            <div class="col-lg-4 col-sm-6" *ngFor="let p of commandeData.products">
+                <div class="product-item">
+                    <div class="pi-pic">
+                        <img src="{{p.image}}" alt="">
+                        <ul>
+                            <li class="quick-view"><a>{{p.description}}</a></li>
+                        </ul>
+                    </div>
+                    <div class="pi-text">
+                        <div class="catagory-name">{{p.categorie}}</div>
+                        <a href="#">
+                            <h5>{{p.libelle}}</h5>
+                        </a>
+                        <div class="product-price">{{p.prix}} TND</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

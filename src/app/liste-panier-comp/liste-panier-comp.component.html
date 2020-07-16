@@ -28,6 +28,7 @@
         <th>DATE ACHAT</th>
         <th>Nbr PRODUITS</th>
         <th>VALIDE</th>
+        <th>DETAILS</th>
     </tr>
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
         <td>{{p.date_achat}}</td>
         <td>{{p.products.length}}</td>
         <td>{{p.is_valid}}</td>
+        <td><a routerLink="/commandeDetails/{{p.id}}">details</a></td>
     </tr>
     </tbody>
 </table>

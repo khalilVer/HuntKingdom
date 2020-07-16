@@ -4,6 +4,7 @@ import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Commande} from '../Model/commande';
 import {Favoris} from '../Model/favoris';
+import {Produit} from '../Model/produit';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,13 @@ export class CommandeServiceService {
     constructor(private http: HttpClient) { }
     getLastCommande(id): Observable<Commande> {
         return this.http.get<Commande>(this.apiURL + '/commande')
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
+    getcommande(id): Observable<Commande> {
+        return this.http.get<Commande>(this.apiURL + '/commandes/' + id)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
