@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./panier-products.component.css']
 })
 export class PanierProductsComponent implements OnInit {
+    id: number = 1 ;
     lastCommande: any;
     pannier: Array<Produit> = [];
     prixTotal: number = 0;
@@ -49,8 +50,9 @@ export class PanierProductsComponent implements OnInit {
         commande.prix_total = this.prixTotal;
         commande.quantite_total = this.quantiteTotal;
         commande.is_valid = false;
+        commande.user = this.id ;
         this.commandeService.createCommande(commande).subscribe((data: {}) => {
-            this.router.navigate(['/shop']);
+            this.viderCommande();
         });
     }
 
@@ -72,12 +74,18 @@ export class PanierProductsComponent implements OnInit {
     prepareCmdNum(): string {
         let cmd: string;
         cmd = this.lastCommande.numero_commande;
-        let prefix = cmd.substr(0, 3);
-        let sufix = cmd.substr(4, cmd.length);
-        let i = parseInt(sufix, 0) + 1;
-        sufix = (i < 10 ? '0000' : (i < 100 ? '000' : (i < 1000 ? '00' : (i < 10000 ? '0' : '') ))) + i ;
-        let cmdFinal: string = prefix + sufix ;
-        console.log(cmdFinal);
-        return cmdFinal ;
+            let prefix = cmd.substr(0, 3);
+            let sufix = cmd.substr(4, cmd.length);
+            let i = parseInt(sufix, 0) + 1;
+            sufix = (i < 10 ? '0000' : (i < 100 ? '000' : (i < 1000 ? '00' : (i < 10000 ? '0' : '') ))) + i ;
+            let cmdFinal: string = prefix + sufix ;
+            console.log(cmdFinal);
+            return cmdFinal ;
+    }
+    viderCommande() {
+        this.prixTotal = 0 ;
+        this.quantiteTotal = 0;
+        this.pannier = [];
+        this.produitService.viderPannier();
     }
 }

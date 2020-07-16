@@ -7,6 +7,7 @@ export class Commande {
     quantite_total: number;
     numero_commande: string;
     is_valid: boolean;
+    user: number;
     products: Array<Produit>;
 
 

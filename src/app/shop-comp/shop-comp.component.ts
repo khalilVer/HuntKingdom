@@ -1,6 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProduitServiceService} from '../service/produit-service.service';
 import {Produit} from '../Model/produit';
+import {Commande} from '../Model/commande';
+import {Favoris} from '../Model/favoris';
+import {FavorisService} from '../service/favoris.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop-comp',
@@ -11,7 +15,7 @@ export class ShopCompComponent implements OnInit {
 
 
     Produits: any = [];
-    constructor(private produitService: ProduitServiceService) { }
+    constructor(private produitService: ProduitServiceService, private favorisService: FavorisService,  public router: Router) { }
     ngOnInit() {
         this.loadProducts();
     }
@@ -23,5 +27,14 @@ export class ShopCompComponent implements OnInit {
     }
     ajouterPannier(produit) {
         this.produitService.ajouterProduitPannier(produit);
+    }
+
+    addFavrois(produit) {
+        let favoris: Favoris = new Favoris();
+        favoris.user = 1 ;
+        favoris.product = produit ;
+        this.favorisService.createFavoris(favoris).subscribe((data: {}) => {
+            this.router.navigate(['/shop']);
+        });
     }
 }

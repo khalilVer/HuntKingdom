@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
-import {Produit} from '../Model/produit';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
+import {Favoris} from '../Model/favoris';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProduitServiceService {
+export class FavorisService {
+
     // Define API
     apiURL = 'pi/hunterskingdom/web/app_dev.php/api';
-    pannier: Produit[] = [];
 
     // Http Options
     httpOptions = {
@@ -20,29 +20,27 @@ export class ProduitServiceService {
     };
 
     constructor(private http: HttpClient) { }
-    getProducts(): Observable<Produit> {
-        return this.http.get<Produit>( this.apiURL + '/products/sell')
+    getFavorisByUser(id): Observable<Favoris> {
+        return this.http.get<Favoris>(this.apiURL + '/favoris/' + id + '/products')
+            .pipe(
+                retry(1)
+            );
+    }
+    createFavoris(favoris): Observable<Favoris> {
+        return this.http.post<Favoris>(this.apiURL + '/favoris/new', JSON.stringify(favoris), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             );
     }
-    getProduct(id): Observable<Produit> {
-        return this.http.get<Produit>(this.apiURL + '/produits/' + id)
+    deleteFavoris(id) {
+        return this.http.delete<Favoris>(this.apiURL + '/favoris/' + id + '/delete', this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             );
     }
-    ajouterProduitPannier(produit) {
-        this.pannier.push(produit);
-    }
-    getPannier(): Array<Produit> {
-        return this.pannier;
-    }
-    viderPannier() {
-        this.pannier = [] ;
-    }
+
     // Error handling
     handleError(error) {
         let errorMessage = '';

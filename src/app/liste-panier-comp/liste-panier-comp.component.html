@@ -22,32 +22,25 @@
 <table class="table table-striped table-dark">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th>NUMERO COMMANDE</th>
+        <th>QUANTITE</th>
+        <th>PRIX</th>
+        <th>DATE ACHAT</th>
+        <th>PRODUCTS</th>
+        <th>VALIDE</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+    <tr *ngFor="let p of commande">
+        <td>{{p.numero_commande}}</td>
+        <td>{{p.quantite_total}}</td>
+        <td>{{p.prix_total}}</td>
+        <td>{{p.date_achat}}</td>
+        <td>{{p.products.length}}</td>
+        <td>{{p.is_valid}}</td>
     </tr>
     </tbody>
 </table>
 
     </div>
+</div>
