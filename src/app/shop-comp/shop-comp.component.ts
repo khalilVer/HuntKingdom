@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class ShopCompComponent implements OnInit {
 
 
+    clicked: boolean = false;
     Produits: any = [];
     constructor(private produitService: ProduitServiceService, private favorisService: FavorisService,  public router: Router) { }
     ngOnInit() {
@@ -26,7 +27,20 @@ export class ShopCompComponent implements OnInit {
         });
     }
     ajouterPannier(produit) {
+        produit.quantiteT = 1;
+        produit.clicked = true;
         this.produitService.ajouterProduitPannier(produit);
+    }
+
+    ajouterPannierDisabled(produit): boolean {
+        let pannier: Array<Produit> = [] ;
+        pannier = this.produitService.getPannier();
+        for (let i = 0; i < pannier.length; i++) {
+            if (pannier[i].reference === produit.reference) {
+                return true;
+            }
+        }
+        return false;
     }
 
     addFavrois(produit) {

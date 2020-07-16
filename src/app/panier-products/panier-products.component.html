@@ -28,7 +28,9 @@
                                             <th>PRIX</th>
                                             <th>CATEGORIE</th>
                                             <th>DESCRIPTION</th>
-                                            <th>ACTION</th>
+                                            <th>QUANTITE TOTALE</th>
+                                            <th>ADD</th>
+                                            <th>DELETE</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -37,7 +39,9 @@
                                             <td>{{p.prix}}</td>
                                             <td>{{p.categorie}}</td>
                                             <td>{{p.description}}</td>
-                                            <td><button class="btn btn-danger waves-effect" (click)="deleteFromPanier(p.id)">DELETE</button></td>
+                                            <td>{{p.quantiteT}}</td>
+                                            <td><button class="btn btn-success waves-effect" (click)="ajouterQuantiteProduit(p)"><i class="fa fa-plus-square" aria-hidden="true"></i></button></td>
+                                            <td><button class="btn btn-danger waves-effect"  (click)="deleteFromPanier(p.reference)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -62,7 +66,7 @@
                             </div>
                             <br>
 
-                            <button style="margin-right:800px;" class=" btn btn-success waves-effect"  [disabled]="quantiteTotal < 1" (click)="addCommande()">ACHATER</button>
+                            <button style="margin-right:800px;" class=" btn btn-success waves-effect"  [disabled]="quantiteTotal < 1" (click)="addCommande()">CONFIRM</button>
                             <button class="btn btn-dark waves-effect" routerLink="/mesCommandes">MES COMMANDES</button>
 
             </div>

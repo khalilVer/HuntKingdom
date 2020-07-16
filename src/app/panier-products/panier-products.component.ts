@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./panier-products.component.css']
 })
 export class PanierProductsComponent implements OnInit {
+    pannierFinal: Array<Produit> = [];
     id: number = 1 ;
     lastCommande: any;
     pannier: Array<Produit> = [];
@@ -30,11 +31,15 @@ export class PanierProductsComponent implements OnInit {
         this.pannier = this.produitService.getPannier();
         let date: Date = new Date();
         this.dateAchat = date.getDate() + ' / ' + (date.getMonth() + 1) + ' / ' + date.getFullYear();
-        this.quantiteTotal = this.pannier.length;
+        this.quantiteTotal = this.pannier.length ;
         this.prixTotal = this.calculatePrixTotal(this.pannier, this.prixTotal);
+        for (let i = 0; i < this.pannier.length; i++) {
+            this.pannierFinal.push(this.pannier[i]);
+        }
+
     }
 
-    calculatePrixTotal(pannier: Array<Produit>, prixTotal): number{
+    calculatePrixTotal(pannier: Array<Produit>, prixTotal): number {
         for (let i = 0; i < pannier.length; i++) {
         prixTotal = prixTotal + pannier[i].prix;
         }
@@ -45,7 +50,7 @@ export class PanierProductsComponent implements OnInit {
         let commande: Commande = new Commande();
         commande.numero_commande = this.prepareCmdNum();
         commande.date_achat = this.dateAchat;
-        commande.products = this.pannier;
+        commande.products = this.pannierFinal;
         console.log(...this.pannier);
         commande.prix_total = this.prixTotal;
         commande.quantite_total = this.quantiteTotal;
@@ -56,19 +61,66 @@ export class PanierProductsComponent implements OnInit {
         });
     }
 
-    deleteFromPanier(id) {
-        let index: number;
-        let prix: number;
-        for (let i = 0; i < this.pannier.length; i++) {
-            if (this.pannier[i].id === id) {
-                index = i;
-                prix = this.pannier[i].prix;
+    ajouterQuantiteProduit(produit) {
+        let p: Produit = produit;
+        this.pannierFinal.push(p);
+        let occ: number = 0;
+        for (let i = 0; i < this.pannierFinal.length; i++) {
+            if (this.pannierFinal[i].reference === produit.reference) {
+                occ++;
 
             }
         }
-        this.pannier.splice(index, 1);
-        this.quantiteTotal = this.quantiteTotal - 1 ;
-        this.prixTotal = this.prixTotal - prix;
+        for (let i = 0; i < this.pannier.length; i++) {
+            if (this.pannier[i].reference === produit.reference) {
+                this.pannier[i].quantiteT = occ;
+
+            }
+        }
+        this.quantiteTotal = this.quantiteTotal + 1 ;
+        this.prixTotal = this.prixTotal + produit.prix;
+    }
+
+    deleteFromPanier(reference) {
+        let index: number;
+        let prix: number;
+        console.log(this.checkProduitExistant(reference));
+        if (this.checkProduitExistant(reference)) {
+            for (let i = 0; i < this.pannierFinal.length; i++) {
+                if (this.pannierFinal[i].reference === reference) {
+                    this.prixTotal = this.prixTotal - this.pannierFinal[i].prix;
+                    this.quantiteTotal = this.quantiteTotal - 1 ;
+                    this.pannierFinal.splice(i, 1);
+                    break;
+                }
+            }
+            for (let i = 0; i < this.pannier.length; i++) {
+                if (this.pannier[i].reference === reference) {
+                    this.pannier[i].quantiteT = this.pannier[i].quantiteT - 1 ;
+                }
+            }
+        }
+        else {
+            for (let i = 0; i < this.pannier.length; i++) {
+                if (this.pannier[i].reference === reference) {
+                    index = i;
+                    prix = this.pannier[i].prix;
+                    this.quantiteTotal = this.quantiteTotal - 1 ;
+                    this.prixTotal = this.prixTotal - prix;
+                    this.pannier.splice(index, 1);
+                    this.pannierFinal.splice(index, 1);
+
+                }
+            }
+        }
+    }
+    checkProduitExistant(reference): boolean {
+        for (let i = 0; i < this.pannier.length; i++) {
+            if (this.pannier[i].reference === reference && this.pannier[i].quantiteT > 1) {
+               return true;
+            }
+        }
+        return false;
     }
 
     prepareCmdNum(): string {
