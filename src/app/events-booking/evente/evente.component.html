@@ -1,12 +1,49 @@
-<div class="col-md-4" >
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{evente.id}}</h5>
-        <p class="card-text"> {{evente.type}}-- {{evente.adresse}} dt</p>
-  
-  
-  
-       
-      </div>
+<form #f="ngForm">
+  <div class="form-group">
+    <label>First Name</label>
+    <input type="text" class="form-control" name="Title" [(ngModel)]="user.nom" required #t="ngModel">
+    <br>
+    <div class="alert alert-danger" *ngIf="t.invalid">
+      Name is required
     </div>
   </div>
+
+  <div class="form-group">
+    <label>Last Name</label>
+    <input type="text" class="form-control" name="description"
+           [(ngModel)]="user.prenom" required minlength="5" #d="ngModel">
+    <br>
+
+    <div class="form-group">
+      <label> Quantite</label>
+      <input type="number" class="form-control" name="quantite"
+             [(ngModel)]="product.qt" required #qt="ngModel">
+      <br>
+      <div class="alert alert-danger" *ngIf="qt.invalid">
+        quantity is required
+      </div>
+
+    </div>
+
+
+    <br>
+    <div class="form-group">
+      <label> price: </label>
+      <input type="texte" class="form-control" name="price"
+             [(ngModel)]="product.price" required #p="ngModel">
+      <div class="alert alert-danger" *ngIf="p.invalid">
+        price is required
+      </div>
+      <div class="alert alert-danger" *ngIf="p.value <0">
+        price >0
+      </div>
+
+    </div>
+    <br>
+  </div>
+
+  <button class="btn btn-success" [disabled]="f.invalid || p.value <0 || qt.value <0 " (click)="addProduct()"> add
+    Product
+  </button>
+
+</form>

@@ -1,3 +1,4 @@
+import { User } from './../../Model/user';
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from '../../Model/event';
 
@@ -8,7 +9,7 @@ import { Event } from '../../Model/event';
 })
 export class EventeComponent implements OnInit {
 
-  @Input() evente : any;
+user : User;
 
   constructor() { }
 
