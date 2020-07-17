@@ -34,7 +34,20 @@ export class FavorisProductsComponent implements OnInit {
     }
 
     ajouterPannier(produit) {
+        produit.quantiteT = 1;
+        produit.clicked = true;
         this.produitService.ajouterProduitPannier(produit);
+    }
+
+    ajouterPannierDisabled(produit): boolean {
+        let pannier: Array<Produit> = [] ;
+        pannier = this.produitService.getPannier();
+        for (let i = 0; i < pannier.length; i++) {
+            if (pannier[i].reference === produit.reference) {
+                return true;
+            }
+        }
+        return false;
     }
 
     deleteFavoris(id) {
