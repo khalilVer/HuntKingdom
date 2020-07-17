@@ -31,7 +31,6 @@ const ROUTES: Routes = [
     {path: 'buysell', component: BuySellComponent},
     {path: 'buy', component: BuyComponent},
     {path: 'sell', component: SellComponent},
-    {path: 'event', component: EventComponent},
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
