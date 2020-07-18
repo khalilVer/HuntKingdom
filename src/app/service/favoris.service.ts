@@ -2,14 +2,12 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
-import {Commande} from '../Model/commande';
 import {Favoris} from '../Model/favoris';
-import {Produit} from '../Model/produit';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommandeServiceService {
+export class FavorisService {
 
     // Define API
     apiURL = 'pi/hunterskingdom/web/app_dev.php/api';
@@ -22,34 +20,27 @@ export class CommandeServiceService {
     };
 
     constructor(private http: HttpClient) { }
-    getLastCommande(id): Observable<Commande> {
-        return this.http.get<Commande>(this.apiURL + '/commande')
+    getFavorisByUser(id): Observable<Favoris> {
+        return this.http.get<Favoris>(this.apiURL + '/favoris/' + id + '/products')
+            .pipe(
+                retry(1)
+            );
+    }
+    createFavoris(favoris): Observable<Favoris> {
+        return this.http.post<Favoris>(this.apiURL + '/favoris/new', JSON.stringify(favoris), this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             );
     }
-    getcommande(id): Observable<Commande> {
-        return this.http.get<Commande>(this.apiURL + '/commandes/' + id)
+    deleteFavoris(id) {
+        return this.http.delete<Favoris>(this.apiURL + '/favoris/' + id + '/delete', this.httpOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
             );
     }
-    createCommande(commande): Observable<Commande> {
-        return this.http.post<Commande>(this.apiURL + '/commandes/new', JSON.stringify(commande), this.httpOptions)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
-    getCommandesByUser(id): Observable<Commande> {
-        return this.http.get<Commande>(this.apiURL + '/' + id + '/mescommandes')
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            );
-    }
+
     // Error handling
     handleError(error) {
         let errorMessage = '';

@@ -1,3 +1,4 @@
+import { HomeEventComponent } from './events-booking/home-event/home-event.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
@@ -15,13 +16,14 @@ import { RegisterComponent } from './register/register.component';
 import { BuySellComponent } from './buy-sell/buy-sell.component';
 import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
-import { EventComponent } from './event/event.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
+import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
+import { EventeComponent } from './events-booking/evente/evente.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
-    {path: '', component: ToolComponent},
+    {path: 'home', component: ToolComponent},
     {path: 'favoris', component: FavorisProductsComponent},
     {path: 'panier', component: PanierProductsComponent},
     {path: 'login', component: LoginComponent},
@@ -29,8 +31,9 @@ const ROUTES: Routes = [
     {path: 'buysell', component: BuySellComponent},
     {path: 'buy', component: BuyComponent},
     {path: 'sell', component: SellComponent},
-    {path: 'event', component: EventComponent},
-    {path: 'mesCommandes', component: ListePanierCompComponent}
+    {path: 'mesCommandes', component: ListePanierCompComponent},
+    {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
+    {path: 'event', component: HomeEventComponent},
 
 ];
 
@@ -47,14 +50,17 @@ const ROUTES: Routes = [
     BuySellComponent,
     BuyComponent,
     SellComponent,
-    EventComponent,
+    HomeEventComponent,
     ShopCompComponent,
-    ListePanierCompComponent
+    ListePanierCompComponent,
+    CommandeDetailsCompComponent,
+    EventeComponent,
+    
   ],
   imports: [
       BrowserModule,
       FormsModule,
-      RouterModule.forRoot(ROUTES),
+      RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule
   ],
   providers: [],

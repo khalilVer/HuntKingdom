@@ -21,7 +21,7 @@ export class ProduitServiceService {
 
     constructor(private http: HttpClient) { }
     getProducts(): Observable<Produit> {
-        return this.http.get<Produit>( this.apiURL + '/produits')
+        return this.http.get<Produit>( this.apiURL + '/products/sell')
             .pipe(
                 retry(1),
                 catchError(this.handleError)
@@ -34,11 +34,21 @@ export class ProduitServiceService {
                 catchError(this.handleError)
             );
     }
+    getProductsByCommandeId(id): Observable<Produit> {
+        return this.http.get<Produit>(this.apiURL + '/mescommandes/' + id + '/products' )
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
     ajouterProduitPannier(produit) {
         this.pannier.push(produit);
     }
     getPannier(): Array<Produit> {
         return this.pannier;
+    }
+    viderPannier() {
+        this.pannier = [] ;
     }
     // Error handling
     handleError(error) {
