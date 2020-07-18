@@ -34,6 +34,13 @@ export class ProduitServiceService {
                 catchError(this.handleError)
             );
     }
+    getProductsByCommandeId(id): Observable<Produit> {
+        return this.http.get<Produit>(this.apiURL + '/mescommandes/' + id + '/products' )
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
     ajouterProduitPannier(produit) {
         this.pannier.push(produit);
     }

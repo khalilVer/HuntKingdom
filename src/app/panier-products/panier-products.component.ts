@@ -58,6 +58,7 @@ export class PanierProductsComponent implements OnInit {
         commande.user = this.id ;
         this.commandeService.createCommande(commande).subscribe((data: {}) => {
             this.viderCommande();
+            this.router.navigate(['/mesCommandes']);
         });
     }
 

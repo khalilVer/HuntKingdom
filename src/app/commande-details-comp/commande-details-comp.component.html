@@ -37,10 +37,12 @@
     <div class="product-list">
         <br>
         <div class="row">
-            <div class="col-lg-4 col-sm-6" *ngFor="let p of commandeData.products">
+            <div class="col-lg-4 col-sm-6" *ngFor="let p of productsFinal">
                 <div class="product-item">
                     <div class="pi-pic">
                         <img src="{{p.image}}" alt="">
+                        <div class="sale pp-sale">{{p.quantiteT}}</div>
+
                         <ul>
                             <li class="quick-view"><a>{{p.description}}</a></li>
                         </ul>
