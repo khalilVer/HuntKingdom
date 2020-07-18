@@ -14,6 +14,7 @@ import {Router} from '@angular/router';
 export class ShopCompComponent implements OnInit {
 
 
+    categorie: string;
     clicked: boolean = false;
     Produits: any = [];
     constructor(private produitService: ProduitServiceService, private favorisService: FavorisService,  public router: Router) { }
@@ -31,7 +32,9 @@ export class ShopCompComponent implements OnInit {
         produit.clicked = true;
         this.produitService.ajouterProduitPannier(produit);
     }
-
+    searchByCategorie(categorie) {
+        this.categorie = categorie;
+    }
     ajouterPannierDisabled(produit): boolean {
         let pannier: Array<Produit> = [] ;
         pannier = this.produitService.getPannier();

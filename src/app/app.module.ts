@@ -20,6 +20,8 @@ import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
 import { EventeComponent } from './events-booking/evente/evente.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -61,7 +63,8 @@ const ROUTES: Routes = [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
-      HttpClientModule
+      HttpClientModule,
+      Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
