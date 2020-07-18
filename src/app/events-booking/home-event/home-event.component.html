@@ -76,7 +76,7 @@
                     <div class="col">
                         <div class="home_content d-flex flex-row align-items-end justify-content-start">
                             
-                            <div class="current_page">You can now choose Your Events</div>
+                            <div class="current_page">You can now Book Your Event</div>
                             <div class="breadcrumbs ml-auto">
                                 <ul>
                                     <li><a href="index.html">Home</a></li>
@@ -118,19 +118,19 @@
                             </div>
                             <div class="col-lg-6 event_col">
                                 <div class="event_content">
-                                    <div class="event_title">Name Event : {{p.nom}}</div>
-                                    <div class="event_title">Type : {{p.type}}</div>
-                                    <div class="event_location">Adress : {{p.adresse}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Event :</b>  {{p.nom}}</div>
+                                    <div class="event_title"> <b style="color: #fd7e14;">Type :</b> {{p.type}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Adress :</b>  {{p.adresse}}</div>
 
-                                    <div class="event_title">Number of Participants : {{p.nbr_participent}}</div>
-                                    <div class="event_title">Available Place : {{p.place_dispo}}</div>
-                                    <div class="event_title">{{p.categorie?.nom}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Number of Participants :</b> {{p.nbr_participent}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Available Place :</b> {{p.place_dispo}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Category Name :</b>{{p.categorie?.nom}}</div>
                                     <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{p.description }}
                                     </div>
                                     
                                     <div class="event_buttons">
-                                        <div class="button event_button event_button_1"><a href="">Buy Tickets Now!</a></div>
-                                        <div class="button_2 event_button event_button_2"><a href="">Read more</a></div>
+                                        <div button type="button" class="btn btn-outline-success"  ><a> Book Now!</a> </div>
+                                        <div button type="button" class="btn btn-outline-warning" >Find The Event Place</div>
                                     </div>
                                 </div>
                             </div>

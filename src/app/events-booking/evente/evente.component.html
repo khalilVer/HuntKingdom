@@ -1,3 +1,4 @@
+<!--
 <form #f="ngForm">
   <div class="form-group">
     <label>First Name</label>
@@ -47,3 +48,53 @@
   </button>
 
 </form>
+-->
+
+<div class="events" *ngFor="let p of events">
+        
+  <div class="container">
+      <div class="row">
+          <div class="col">
+              
+              <div class="event">
+                  <div class="row row-lg-eq-height">
+                      <div class="col-lg-6 event_col">
+                          <div class="event_image_container">
+                              <div class="background_image" style="background-image:url(images/event_9.jpg)"></div>
+                              <div class="date_container">
+                                  <a href="#">
+                                      <span class="date_content d-flex flex-column align-items-center justify-content-center">
+                                          <div class="date_day">{{p.date_debut | date : 'dd'}} </div>
+                                          <div class="date_month">{{p.date_fin | date : 'LLLL'}}</div>
+                                      </span>
+                                    
+
+                                  </a>    
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6 event_col">
+                          <div class="event_content">
+                              <div class="event_title"><b style="color: #fd7e14;">Event :</b>  {{p.nom}}</div>
+                              <div class="event_title"> <b style="color: #fd7e14;">Type :</b> {{p.type}}</div>
+                              <div class="event_title"><b style="color: #fd7e14;">Adress :</b>  {{p.adresse}}</div>
+
+                              <div class="event_title"><b style="color: #fd7e14;">Number of Participants :</b> {{p.nbr_participent}}</div>
+                              <div class="event_title"><b style="color: #fd7e14;">Available Place :</b> {{p.place_dispo}}</div>
+                              <div class="event_title"><b style="color: #fd7e14;">Category Name :</b>{{p.categorie?.nom}}</div>
+                              <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{p.description }}
+                              </div>
+                              
+                              <div class="event_buttons">
+                                  <div button type="button" class="btn btn-outline-success"  >Book Now!</div>
+                                  <div button type="button" class="btn btn-outline-warning" >Find The Event Place</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+          </div>  
+      
+  </div>
+</div>
