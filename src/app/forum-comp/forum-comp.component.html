@@ -1,0 +1,81 @@
+<section class="blog-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
+                <div class="blog-sidebar">
+                    <div class="search-form">
+                        <h4>Search</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Search . . .  ">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="blog-catagory">
+                        <h4>Categories</h4>
+                        <ul>
+                            <li><a href="#">Fishing</a></li>
+                            <li><a href="#">Hunting</a></li>
+                        </ul>
+                    </div>
+                    <div class="recent-post">
+                        <h4>Recent Post</h4>
+                        <div class="blog-catagory">
+                            <a href="#" class="rb-item">
+                              
+                                <div class="rb-text">
+                                    <h6>The Personality Trait That Makes...</h6>
+                                    <p>Fashion <span>- May 19, 2019</span></p>
+                                </div>
+                            </a>
+                            <a href="#" class="rb-item">
+                                <div class="rb-pic">
+                                    <img src="img/blog/recent-2.jpg" alt="">
+                                </div>
+                                <div class="rb-text">
+                                    <h6>The Personality Trait That Makes...</h6>
+                                    <p>Fashion <span>- May 19, 2019</span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 order-1 order-lg-2">
+                <div *ngFor="let p of Threads">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 bg-light">
+                        <div class="blog-item">
+                                <div class="bi-text">
+                                <a href="./blog-details.html">
+                                    <h4>{{p.title}}</h4>
+                                </a>
+                                <p>{{p.topic}} <span>- {{p.creationdate}} - </span> 
+                                    <span class="text-success">{{p.upvote}} </span>&nbsp;<img src="assets/img/thread/like.png" alt="image"/> &nbsp;
+                                    <span class="text-danger">{{p.downvote}} </span>&nbsp;<img src="assets/img/thread/dislike.png" alt="image"/> 
+                                
+                                </p>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 bg-light">
+                        <div class="blog-item">
+                                <div class="bi-text">
+                                <a href="./blog-details.html">
+                                    <h4>The Personality Trait That Makes People Happier</h4>
+                                </a>
+                                <p>travel <span>- May 19, 2019</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
