@@ -61,7 +61,7 @@ const ROUTES: Routes = [
     ShopCompComponent,
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
-    BookEventComponent,
+    BookEventComponent
     
   ],
   imports: [
