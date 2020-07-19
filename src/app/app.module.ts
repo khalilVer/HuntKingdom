@@ -19,7 +19,7 @@ import { SellComponent } from './sell/sell.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
-import { EventeComponent } from './events-booking/evente/evente.component';
+import { BookEventComponent } from './events-booking/book-event/book-event.component';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -34,6 +34,9 @@ const ROUTES: Routes = [
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
+    {path: 'book', component: BookEventComponent},
+
+
 
 ];
 
@@ -54,7 +57,7 @@ const ROUTES: Routes = [
     ShopCompComponent,
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
-    EventeComponent,
+    BookEventComponent,
     
   ],
   imports: [
