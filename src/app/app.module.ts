@@ -38,7 +38,7 @@ const ROUTES: Routes = [
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
-    {path: 'book', component: BookEventComponent},
+    {path: 'book/:id', component: BookEventComponent},
 
 
 
@@ -54,7 +54,7 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     LoginComponent,
     RegisterComponent,
-    BuySellComponent,
+    BuySellComponent, 
     BuyComponent,
     SellComponent,
     HomeEventComponent,
