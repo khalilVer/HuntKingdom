@@ -1,4 +1,10 @@
-import { Personne } from './../../Model/personne';
+import { EventService } from './../../service/event.service';
+import { BookService } from './../../service/book.service';
+import { Reservation } from './../../Model/reservation';
+import {ActivatedRoute, Router} from '@angular/router';
+
+
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from 'src/app/Model/event';
 
@@ -9,11 +15,27 @@ import { Event } from 'src/app/Model/event';
 })
 export class BookEventComponent implements OnInit {
 
-  @Input() event: Event;
-  user :Personne= new  Personne ();
-  constructor() { }
+  id = this.actRoute.snapshot.params['id'];
 
-  ngOnInit() {
+  event : any= {};
+
+  reservationetDetails = { nom: '', prenom: '',telephone: '', email :'', event: '' }
+
+  constructor(public actRoute: ActivatedRoute, private eventService: EventService, private produitService: BookService, public router: Router) { }
+
+ngOnInit() {
+  this.eventService.getEvent(this.id).subscribe((data) => {
+    this.event = data;
+    console.log('Event', this.event);
+});
+}
+
+  addReservation() {
+    console.log('this.reservationetDetails', this.reservationetDetails);
+    this.reservationetDetails.event = this.id;
+      this.produitService.createReservation(this.reservationetDetails).subscribe((data: {}) => {
+        this.router.navigate(['/event']);
+      });
   }
 
 }

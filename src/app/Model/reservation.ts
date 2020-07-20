@@ -1,4 +1,4 @@
-export class Personne {
+export class Reservation {
     id: number;
     nom: string;
     prenom: string;

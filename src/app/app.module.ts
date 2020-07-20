@@ -40,7 +40,8 @@ const ROUTES: Routes = [
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
     {path: 'book', component: BookEventComponent},
-    {path: 'forum', component: ForumCompComponent}
+    {path: 'forum', component: ForumCompComponent},
+    {path: 'book/:id', component: BookEventComponent}
 
 
 
@@ -56,7 +57,7 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     LoginComponent,
     RegisterComponent,
-    BuySellComponent,
+    BuySellComponent, 
     BuyComponent,
     SellComponent,
     HomeEventComponent,
@@ -65,6 +66,7 @@ const ROUTES: Routes = [
     CommandeDetailsCompComponent,
     BookEventComponent,
     ForumCompComponent,
+    BookEventComponent
     
   ],
   imports: [

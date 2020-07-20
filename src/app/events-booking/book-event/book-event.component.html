@@ -2,7 +2,7 @@
 <form #f="ngForm">
   <div class="form-group">
     <label>First Name</label>
-    <input type="text" class="form-control" name="Title" [(ngModel)]="user.nom" required #t="ngModel">
+    <input type="text" class="form-control" name="Title" [(ngModel)]="book.nom" required #t="ngModel">
     <br>
     <div class="alert alert-danger" *ngIf="t.invalid">
       Name is required
@@ -12,7 +12,7 @@
   <div class="form-group">
     <label>Last Name</label>
     <input type="text" class="form-control" name="description"
-           [(ngModel)]="user.prenom" required minlength="5" #d="ngModel">
+           [(ngModel)]="book.prenom" required minlength="5" #d="ngModel">
     <br>
 
     <div class="form-group">
@@ -32,10 +32,10 @@
       <label> price: </label>
       <input type="texte" class="form-control" name="price"
              [(ngModel)]="product.price" required #p="ngModel">
-      <div class="alert alert-danger" *ngIf="p.invalid">
+      <div class="alert alert-danger" *ngIf="event.invalid">
         price is required
       </div>
-      <div class="alert alert-danger" *ngIf="p.value <0">
+      <div class="alert alert-danger" *ngIf="event.value <0">
         price >0
       </div>
 
@@ -43,7 +43,7 @@
     <br>
   </div>
 
-  <button class="btn btn-success" [disabled]="f.invalid || p.value <0 || qt.value <0 " (click)="addProduct()"> add
+  <button class="btn btn-success" [disabled]="f.invalid || event.value <0 || qt.value <0 " (click)="addProduct()"> add
     Product
   </button>
 
@@ -97,8 +97,8 @@
                                     <div class="date_container">
                                         <a href="#">
                                             <span class="date_content d-flex flex-column align-items-center justify-content-center">
-                                                <div class="date_day">{{p.date_debut | date : 'dd'}} </div>
-                                                <div class="date_month">{{p.date_fin | date : 'LLLL'}}</div>
+                                                <div class="date_day">{{event.date_debut | date : 'dd'}} </div>
+                                                <div class="date_month">{{event.date_fin | date : 'LLLL'}}</div>
                                             </span>
                                           
 
@@ -109,14 +109,14 @@
 
                             <div class="col-lg-6 event_col">
                                 <div class="event_content">
-                                    <div class="event_title"><b style="color: #fd7e14;">Event :</b>  {{p.nom}}</div>
-                                    <div class="event_title"> <b style="color: #fd7e14;">Type :</b> {{p.type}}</div>
-                                    <div class="event_title"><b style="color: #fd7e14;">Adress :</b>  {{p.adresse}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Event :</b>  {{event.nom}}</div>
+                                    <div class="event_title"> <b style="color: #fd7e14;">Type :</b> {{event.type}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Adress :</b>  {{event.adresse}}</div>
 
-                                    <div class="event_title"><b style="color: #fd7e14;">Number of Participants :</b> {{p.nbr_participent}}</div>
-                                    <div class="event_title"><b style="color: #fd7e14;">Available Place :</b> {{p.place_dispo}}</div>
-                                    <div class="event_title"><b style="color: #fd7e14;">Category Name :</b>{{p.categorie?.nom}}</div>
-                                    <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{p.description }}
+                                    <div class="event_title"><b style="color: #fd7e14;">Number of Participants :</b> {{event.nbr_participent}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Available Place :</b> {{event.place_dispo}}</div>
+                                    <div class="event_title"><b style="color: #fd7e14;">Category Name :</b>{{event.categorie?.nom}}</div>
+                                    <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{event.description }}
                                     </div>
                                     
                                     
@@ -128,7 +128,7 @@
                     <form #f="ngForm">
                         <div class="form-group">
                           <label>First Name</label>
-                          <input type="text" class="form-control" name="nom" [(ngModel)]="user.nom" required #n="ngModel">
+                          <input type="text" class="form-control" name="nom" [(ngModel)]="reservationetDetails.nom" required #n="ngModel">
                           <br>
                           <div class="alert alert-danger" *ngIf="n.invalid">
                             Name is required
@@ -138,14 +138,14 @@
                         <div class="form-group">
                           <label>Last Name</label>
                           <input type="text" class="form-control" name="prenom"
-                                 [(ngModel)]="user.prenom" required  #d="ngModel">
+                                 [(ngModel)]="reservationetDetails.prenom" required  #d="ngModel">
                           <br>
                           <div  class="alert alert-danger" *ngIf="d.invalid"> Name is required </div>
                           <br>
                           <div class="form-group">
                             <label> Email  </label>
                             <input type="email" class="form-control" name="email"
-                                   [(ngModel)]="user.email" required #e="ngModel"  >
+                                   [(ngModel)]="reservationetDetails.email" required #e="ngModel"  >
                             <div class="alert alert-danger"  *ngIf="e.invalid">
                               Email is required
                             </div>
@@ -158,24 +158,14 @@
                       
                         <div class="form-group">
                             <label>Phone number</label>
-                            <input type="number" class="form-control" name="telf"
-                              [(ngModel)]="user.telf" required minlength="8" #f="ngModel">
+                            <input type="tel" class="form-control" name="telf"
+                              [(ngModel)]="reservationetDetails.telephone" required minlength="8" #f="ngModel">
                               <div  class="alert alert-danger" *ngIf="f.invalid"> phone number is required </div>
-                              <div  *ngIf="f.errors.minlength">
-                                number must be at least 8 number 
-                              </div>
+                              
                         </div>
 
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="Email" class="form-control" name="email"
-                              [(ngModel)]="user.telf" required minlength="8" #e="ngModel">
-                              <div  class="alert alert-danger" *ngIf="e.invalid"> email is required </div>
-                              <div  *ngIf="f.errors.minlength">
-                                email is requred
-                              </div>
-                        </div>
-                        <button class="btn btn-success" >Book </button>
+                        
+                        <button class="btn btn-success" (click)="addReservation()" >Book </button>
                       
                       </form>
 
