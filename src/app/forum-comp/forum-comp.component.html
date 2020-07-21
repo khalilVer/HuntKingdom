@@ -42,6 +42,25 @@
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
                 <div *ngFor="let p of Threads">
+                    <p-panel>
+                        <p-header>
+                            <div class="ui-helper-clearfix">
+                                <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{p.title}}</span>
+                                <p-splitButton [style]="{'float':'right'}" label="Save" icon="pi pi-check" (onClick)="save()" [model]="items"></p-splitButton>
+                            </div>
+                        </p-header>
+                       <p>{{p.description}}</p> 
+                        <p-footer>
+                            <p><span style="color:rgb(190, 144, 58);">{{p.topic}}</span> -<span> {{p.creationdate}} - </span> 
+                                <span class="text-success">{{p.upvote}} </span>&nbsp;<img src="assets/img/thread/like.png" alt="image"/> &nbsp;
+                                <span class="text-danger">{{p.downvote}} </span>&nbsp;<img src="assets/img/thread/dislike.png" alt="image"/> 
+                            
+                            </p>
+                        </p-footer>
+                    </p-panel>
+                <hr>
+                </div>
+             
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 bg-light">
                         <div class="blog-item">
@@ -60,22 +79,10 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 bg-light">
-                        <div class="blog-item">
-                                <div class="bi-text">
-                                <a href="./blog-details.html">
-                                    <h4>The Personality Trait That Makes People Happier</h4>
-                                </a>
-                                <p>travel <span>- May 19, 2019</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
+            
         </div>
     </div>
 </section>

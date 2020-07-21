@@ -2,6 +2,7 @@ import { HomeEventComponent } from './events-booking/home-event/home-event.compo
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToolComponent } from './tool/tool.component';
@@ -24,6 +25,9 @@ import { BookEventComponent } from './events-booking/book-event/book-event.compo
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ForumCompComponent } from './forum-comp/forum-comp.component';
+import { SharestoryComponent } from './sharestory/sharestory.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PanelModule} from 'primeng/panel';
 
 
 const ROUTES: Routes = [
@@ -41,7 +45,8 @@ const ROUTES: Routes = [
     {path: 'event', component: HomeEventComponent},
     {path: 'book', component: BookEventComponent},
     {path: 'forum', component: ForumCompComponent},
-    {path: 'book/:id', component: BookEventComponent}
+    {path: 'book/:id', component: BookEventComponent},
+    {path: 'sharestory', component: SharestoryComponent}
 
 
 
@@ -66,7 +71,8 @@ const ROUTES: Routes = [
     CommandeDetailsCompComponent,
     BookEventComponent,
     ForumCompComponent,
-    BookEventComponent
+    BookEventComponent,
+    SharestoryComponent
     
   ],
   imports: [
@@ -74,7 +80,9 @@ const ROUTES: Routes = [
       FormsModule,
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule,
-      Ng2SearchPipeModule
+      Ng2SearchPipeModule,
+      BrowserAnimationsModule,
+      PanelModule
   ],
   providers: [],
   bootstrap: [AppComponent],

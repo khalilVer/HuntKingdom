@@ -7,6 +7,4 @@ export class Thread {
     isValidated: string;
     topic: string;
     creationdate: string;
-
-
 }
