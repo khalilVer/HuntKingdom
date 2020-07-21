@@ -27,6 +27,13 @@ export class ProduitServiceService {
                 catchError(this.handleError)
             );
     }
+    getProductsByCategorie(categorie): Observable<Produit> {
+        return this.http.get<Produit>( this.apiURL + '/products/categories/' + categorie)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
     getProduct(id): Observable<Produit> {
         return this.http.get<Produit>(this.apiURL + '/produits/' + id)
             .pipe(

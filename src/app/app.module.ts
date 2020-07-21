@@ -19,7 +19,11 @@ import { SellComponent } from './sell/sell.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
-import { EventeComponent } from './events-booking/evente/evente.component';
+
+import { BookEventComponent } from './events-booking/book-event/book-event.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -34,6 +38,9 @@ const ROUTES: Routes = [
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
+    {path: 'book/:id', component: BookEventComponent},
+
+
 
 ];
 
@@ -47,21 +54,22 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     LoginComponent,
     RegisterComponent,
-    BuySellComponent,
+    BuySellComponent, 
     BuyComponent,
     SellComponent,
     HomeEventComponent,
     ShopCompComponent,
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
-    EventeComponent,
+    BookEventComponent
     
   ],
   imports: [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
-      HttpClientModule
+      HttpClientModule,
+      Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

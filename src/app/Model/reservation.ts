@@ -1,9 +1,9 @@
-export class User {
+export class Reservation {
     id: number;
     nom: string;
     prenom: string;
     email: string;
-    telf: String;
+    telf: Number;
     
 
 }
