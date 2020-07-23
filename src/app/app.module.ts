@@ -28,6 +28,8 @@ import { ForumCompComponent } from './forum-comp/forum-comp.component';
 import { SharestoryComponent } from './sharestory/sharestory.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PanelModule} from 'primeng/panel';
+import {EditorModule} from 'primeng/editor';
+import { DetailthreadComponent } from './detailthread/detailthread.component';
 
 
 const ROUTES: Routes = [
@@ -46,7 +48,8 @@ const ROUTES: Routes = [
     {path: 'book', component: BookEventComponent},
     {path: 'forum', component: ForumCompComponent},
     {path: 'book/:id', component: BookEventComponent},
-    {path: 'sharestory', component: SharestoryComponent}
+    {path: 'sharestory', component: SharestoryComponent},
+    {path: 'detailthread', component: DetailthreadComponent}
 
 
 
@@ -72,7 +75,8 @@ const ROUTES: Routes = [
     BookEventComponent,
     ForumCompComponent,
     BookEventComponent,
-    SharestoryComponent
+    SharestoryComponent,
+    DetailthreadComponent
     
   ],
   imports: [
@@ -82,7 +86,8 @@ const ROUTES: Routes = [
       HttpClientModule,
       Ng2SearchPipeModule,
       BrowserAnimationsModule,
-      PanelModule
+      PanelModule,
+      EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
