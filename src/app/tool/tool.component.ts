@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-tool',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
+
   }
 
 }

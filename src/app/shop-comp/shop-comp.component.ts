@@ -26,6 +26,12 @@ export class ShopCompComponent implements OnInit {
             this.Produits = data;
         });
     }
+    checkConnected(): boolean{
+        if (localStorage.length !== 0) {
+            return false;
+        }
+        return true;
+    }
     ajouterPannier(produit) {
         produit.quantiteT = 1;
         produit.clicked = true;

@@ -27,6 +27,7 @@ export class PanierProductsComponent implements OnInit {
           this.lastCommande = data;
       });
       if (localStorage.length === 0) {
+          this.viderCommande();
           this.connectedUser = true;
       } else {
           this.connectedUser = false ;

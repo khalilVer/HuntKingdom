@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
   }
 
     gotoList() {
-      this.router.navigate(['/home']);
+        window.location.href = '/home';
     }
 }

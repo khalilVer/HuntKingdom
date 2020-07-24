@@ -30,7 +30,7 @@ export class UsersService {
     setUserSession(user) {
       this.user = user;
     }
-    getUserSession(user): Users {
+    getUserSession(): Users {
         return this.user;
     }
     // Error handling
