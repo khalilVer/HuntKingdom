@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 })
 export class ShopCompComponent implements OnInit {
 
-
     categorie: string;
     clicked: boolean = false;
     Produits: any = [];

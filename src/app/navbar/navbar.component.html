@@ -15,6 +15,7 @@
             </div>
             <div class="ht-right">
                 <a routerLink="/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                <a class="login-panel"><button style="border:none;background-color: transparent" (click)="logOutMehtod()">Logout</button><i class="fa fa-user"></i></a>
                 <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
                         <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
@@ -69,6 +70,14 @@
                             </a>
 
                         </li>
+                        <li></li>
+
+                        <li class="heart-icon">
+                            <a >
+                                <h6 style="color: white">{{username}}</h6>
+                            </a>
+                        </li>
+                        <li></li>
 
                     </ul>
                 </div>

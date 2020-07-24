@@ -20,14 +20,14 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="login-form">
                     <h2>Login</h2>
-                    <form action="#">
+                    <form>
                         <div class="group-input">
                             <label for="username">Username or email address *</label>
-                            <input type="text" id="username">
+                            <input type="text" [(ngModel)]="user.username" id="username" name="firstName">
                         </div>
                         <div class="group-input">
                             <label for="pass">Password *</label>
-                            <input type="text" id="pass">
+                            <input type="text" [(ngModel)]="user.password" id="pass" name="password">
                         </div>
                         <div class="group-input gi-check">
                             <div class="gi-more">
@@ -39,7 +39,7 @@
                                 <a href="#" class="forget-pass">Forget your Password</a>
                             </div>
                         </div>
-                        <button type="submit" class="site-btn login-btn">Sign In</button>
+                        <button class="site-btn login-btn" (click)="login()">Sign In</button>
                     </form>
                     <div class="switch-login">
                         <a routerLink="/register" class="or-login">Or Create An Account</a>
