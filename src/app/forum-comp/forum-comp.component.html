@@ -17,27 +17,7 @@
                             <li><a href="#">Hunting</a></li>
                         </ul>
                     </div>
-                    <div class="recent-post">
-                        <h4>Recent Post</h4>
-                        <div class="blog-catagory">
-                            <a href="#" class="rb-item">
-                              
-                                <div class="rb-text">
-                                    <h6>The Personality Trait That Makes...</h6>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
-                                </div>
-                            </a>
-                            <a href="#" class="rb-item">
-                                <div class="rb-pic">
-                                    <img src="img/blog/recent-2.jpg" alt="">
-                                </div>
-                                <div class="rb-text">
-                                    <h6>The Personality Trait That Makes...</h6>
-                                    <p>Fashion <span>- May 19, 2019</span></p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
@@ -45,26 +25,31 @@
                     <p-panel>
                         <p-header>
                             <div class="ui-helper-clearfix">
-                                <a routerLink="/detailthread/{{p.id}}"><span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{p.title}}</span></a>
-                                <p-splitButton [style]="{'float':'right'}" label="Save" icon="pi pi-check" (onClick)="save()" [model]="items"></p-splitButton>
+                                <a routerLink="/detailthread/{{p.id}}"><span class="ui-panel-title"
+                                        style="font-size:16px;display:inline-block;margin-top:2px">{{p.title}}</span></a>
+                                <p-splitButton [style]="{'float':'right'}" label="Save" icon="pi pi-check"
+                                    (onClick)="save()" [model]="items"></p-splitButton>
                             </div>
                         </p-header>
-                       <p>{{p.description}}</p> 
+                        <p>{{p.description}}</p>
                         <p-footer>
-                            <p><span style="color:rgb(190, 144, 58);">{{p.topic}}</span> -<span> {{p.creationdate}} - </span> 
-                                <span class="text-success">{{p.upvote}} </span>&nbsp;<img src="assets/img/thread/like.png" alt="image"/> &nbsp;
-                                <span class="text-danger">{{p.downvote}} </span>&nbsp;<img src="assets/img/thread/dislike.png" alt="image"/> 
-                            
+                            <p><span style="color:rgb(190, 144, 58);">{{p.topic}}</span> -<span> {{p.creationdate}} -
+                                </span>
+                                <span class="text-success">{{p.upvote}} </span>&nbsp;<img
+                                    src="assets/img/thread/like.png" alt="image" /> &nbsp;
+                                <span class="text-danger">{{p.downvote}} </span>&nbsp;<img
+                                    src="assets/img/thread/dislike.png" alt="image" />
+
                             </p>
                         </p-footer>
                     </p-panel>
-                <hr>
+                    <hr>
                 </div>
-             
-     
+
+
 
             </div>
-            
+
         </div>
     </div>
 </section>
