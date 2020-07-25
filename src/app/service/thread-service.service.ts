@@ -21,11 +21,7 @@ export class ThreadServiceService {
   constructor(private http: HttpClient) { }
 
   createThread(thread): Observable<Thread> {
-    return this.http.post<Thread>(this.apiURL + '/threads/new', JSON.stringify(thread), this.httpOptions)
-        .pipe(
-            retry(1),
-            catchError(this.handleError)
-        );
+    return this.http.post<Thread>(this.apiURL + '/threads/new', JSON.stringify(thread), this.httpOptions);
 }
 
   // Error handling

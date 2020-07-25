@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Overwatch } from '../Model/overwatch';
 import { notification } from '../Model/notification';
+import { threaddetail } from '../Model/threaddetail';
 
 
 @Injectable({
@@ -36,6 +37,14 @@ getSubjects(): Observable<Overwatch> {
 
   getThreads(): Observable<Thread> {
     return this.http.get<Thread>( this.apiURL + '/threadsvalid')
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
+}
+
+getComments(threadid): Observable<threaddetail> {
+    return this.http.get<threaddetail>( this.apiURL + '/threadcomments/' + threadid)
         .pipe(
             retry(1),
             catchError(this.handleError)
@@ -90,6 +99,8 @@ getThread(id): Observable<Thread> {
             catchError(this.handleError)
         );
 }
+
+
 
 // Error handling
 handleError(error) {

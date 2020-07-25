@@ -4,7 +4,7 @@ export class Thread {
     description: string;
     upvote: string;
     downvote: string;
-    isValidated: string;
+    is_validated: string;
     topic: string;
     creationdate: string;
     creatoruser: string;

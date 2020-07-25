@@ -49,7 +49,7 @@ const ROUTES: Routes = [
     {path: 'forum', component: ForumCompComponent},
     {path: 'book/:id', component: BookEventComponent},
     {path: 'sharestory', component: SharestoryComponent},
-    {path: 'detailthread', component: DetailthreadComponent}
+    {path: 'detailthread/:id', component: DetailthreadComponent}
 
 
 
