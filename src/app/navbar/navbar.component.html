@@ -63,7 +63,7 @@
                             </a>
                         </li>
                         <li></li>
-                        <li class="cart-icon">
+                        <li class="cart-icon" *ngIf="connected == true">
                             <a routerLink="/panier">
                                 <i class="fa fa-shopping-basket heart fa-lg"></i>
                                 <h6 class="favoris-text">Panier</h6>
