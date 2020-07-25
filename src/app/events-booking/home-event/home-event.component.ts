@@ -1,5 +1,7 @@
 import { EventService } from '../../service/event.service';
 import { Component, OnInit } from '@angular/core';
+import { Event } from 'src/app/Model/event';
+
 
 @Component({
   selector: 'app-home-event',
@@ -21,6 +23,19 @@ ngOnInit() {
           console.log('*********************');
           console.log(this.events.nom);
       });
+  }
+
+  increment(event: Event) {
+    this.eventService.likeEvent(event).subscribe((data) => {
+      event.like = data['like'];
+      console.log('Event', event);
+    })
+  }
+  deccrement(event: Event) {
+    this.eventService.dislikeEvent(event).subscribe((data) => {
+      event.dislke = data['dislike'];
+      console.log('Event', event);
+    })
   }
   
 }

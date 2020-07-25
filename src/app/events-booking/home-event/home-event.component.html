@@ -132,8 +132,12 @@
                                         <div button type="button" class="btn btn-outline-success" [disabled]="p.place_dispo==0"
                                         
                                         ><a [routerLink]="['/book',p.id]" style="color: #fd7e14;"> Book Now!</a> </div>
-                                        <div button type="button" class="btn btn-outline-warning" >Find The Event Place</div>
-                                        <button class="btn btn-outline-info" >like: </button>
+
+                                        <div button type="button" class="btn btn-outline-warning" 
+                                        ><a [routerLink]="['/map',p.id]" style="color: #fd7e14;">Find The Event Place</a></div>
+                                        <button class="btn btn-outline-info"(click)="increment(p)" >Like : {{p.like ? p.like : 0}} </button>
+                                        <button class="btn btn-outline-info" (click)= "deccrement(p)">Dislike : {{ p.dislke ? p.like : 0}} </button>
+                                       
 
                                     </div>
                                 </div>

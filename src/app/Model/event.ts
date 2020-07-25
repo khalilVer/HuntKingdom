@@ -12,6 +12,9 @@ export class Event {
     placeDispo: number;
     categorie: Categorie;
     description : String;
+    like: number;
+    dislke: number;
+
 
 
 }

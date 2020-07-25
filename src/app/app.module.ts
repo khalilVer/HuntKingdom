@@ -23,6 +23,7 @@ import { CommandeDetailsCompComponent } from './commande-details-comp/commande-d
 import { BookEventComponent } from './events-booking/book-event/book-event.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MapComponent } from './events-booking/map/map.component';
 
 
 const ROUTES: Routes = [
@@ -39,6 +40,8 @@ const ROUTES: Routes = [
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
     {path: 'book/:id', component: BookEventComponent},
+    {path: 'map/:id', component: MapComponent},
+
 
 
 
@@ -61,7 +64,8 @@ const ROUTES: Routes = [
     ShopCompComponent,
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
-    BookEventComponent
+    BookEventComponent,
+    MapComponent
     
   ],
   imports: [
