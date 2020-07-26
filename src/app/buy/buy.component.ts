@@ -38,12 +38,7 @@ export class BuyComponent implements OnInit {
   }
 
   searchByCategorie(categorie) {
-    this.offreService.getByCategorie(categorie).subscribe(data => {
-      this.loadOffres();
-    });  }
-  generatePdf(offres) {
-
-      this.categorie = categorie;
+    this.categorie = categorie;
   }
   generatePdf() {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
