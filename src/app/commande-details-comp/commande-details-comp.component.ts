@@ -27,7 +27,6 @@ export class CommandeDetailsCompComponent implements OnInit {
       });
   }
 
-  //adjust list product
   adjustproductsList() {
 
       for (let i = 0; i < this.products.length; i++) {
