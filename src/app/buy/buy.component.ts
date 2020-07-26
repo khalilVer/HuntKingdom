@@ -36,9 +36,8 @@ export class BuyComponent implements OnInit {
   }
 
   searchByCategorie(categorie) {
-    this.offreService.getByCategorie(categorie).subscribe(data => {
-      this.loadOffres();
-    });  }
+      this.categorie = categorie;
+  }
   generatePdf() {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
     if (window.confirm('Voulez-vous confimer votre achat? ')) {
