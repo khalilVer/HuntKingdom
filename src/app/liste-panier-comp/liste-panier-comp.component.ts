@@ -24,4 +24,12 @@ export class ListePanierCompComponent implements OnInit {
         });
     }
 
+    deleteCommande(id) {
+        if (window.confirm('Are you sure, you want to delete?')) {
+            this.commandeService.deleteCommande(id).subscribe(data => {
+                this.loadCommandes(this.id);
+            });
+        }
+    }
+
 }
