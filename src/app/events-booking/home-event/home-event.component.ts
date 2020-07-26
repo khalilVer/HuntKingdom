@@ -18,7 +18,9 @@ ngOnInit() {
 
   // Get event list
   loadEvents() {
-      return this.eventService.getEvents().subscribe((data: Event[]) => {
+      return this.eventService.getEvents().subscribe((data: Event) => {
+       // console.log('hiiiiiii',data.nom);
+
           this.events = data;
           console.log('*********************');
           console.log(this.events.nom);

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {  AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
+import { EventService } from '../../service/event.service';
+import { Event } from 'src/app/Model/event';
+
+
 
 @Component({
   selector: 'app-map',
@@ -10,7 +14,12 @@ import * as L from 'leaflet';
 
   export class MapComponent implements AfterViewInit {
     map;
+    events : any = [];
   
+
+    lat:String= '';
+        lng: String= ' ';
+
     // retrieve from https://gist.github.com/ThomasG77/61fa02b35abf4b971390
     smallIcon = new L.Icon({
       iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-icon.png',
@@ -22,16 +31,28 @@ import * as L from 'leaflet';
       shadowSize:  [41, 41]
     });
   
-    constructor() { }
+    constructor(private eventService: EventService) { }
   
     ngAfterViewInit(): void {
       this.createMap();
     }
+
+    loadEvents() {
+      return this.eventService.getEvents().subscribe((data: Event) => {
+        console.log('hiiiiiii',data.nom);
+
+          this.lat=data.latitude;
+          this.lng=data.langitude 
+          
+
+
+      });
+  }
   
     createMap() {
       const parcThabor = {
-        lat: 36.80278,
-        lng: 10.17972	,
+        lat: 38.9637,
+        lng: 35.2433	,
       };
   
       const zoomLevel = 12;
