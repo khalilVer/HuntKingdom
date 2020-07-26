@@ -21,6 +21,7 @@ import { BookEventComponent } from './events-booking/book-event/book-event.compo
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
+import { FilterPipe } from './events-booking/filter.pipe';
 
 
 const ROUTES: Routes = [
@@ -59,6 +60,7 @@ const ROUTES: Routes = [
     BookEventComponent,
     MapComponent,
     WelcomeBookComponent,
+    FilterPipe,
   ],
   imports: [
       BrowserModule,

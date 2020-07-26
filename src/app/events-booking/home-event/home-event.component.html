@@ -32,11 +32,13 @@
             </div>
         </div>
     </div>
-    
-
+    <div  class="col-md-6">
+    <input type="text" style="width:400px;margin: auto; margin-left: auto;margin-right: auto; border: 3px solid #fd7e14;  ;padding: 10px;" 
+    placeholder="Search Your Event " [(ngModel)]="filteredStatus">
+     </div>
     <!-- Events -->
 
-    <div class="events" *ngFor="let p of events">
+    <div class="events" *ngFor="let p of events | filter:filteredStatus:'nom'">
         
         <div class="container">
             <div class="row">
@@ -85,7 +87,7 @@
 
                                         <button class="btn btn-outline-info"(click)="increment(p)" >Like : {{p.like ? p.like : 0}} </button>
 
-                                        <button class="btn btn-outline-danger" (click)= "deccrement(p)">Dislike : {{ p.dislke ? p.dislke : 0 }} </button>
+                                        <button class="btn btn-outline-danger" (click)= "deccrement(p)">Dislike : {{ p.dislike ? p.dislike : 0 }} </button>
                                        
                                        
                                         <div *ngIf="p.place_dispo==0" > <span style="font-size: 40px; font-weight: bold; color: red;">Sorry There is no place</span></div>
