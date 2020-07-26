@@ -1,7 +1,6 @@
 import { HomeEventComponent } from './events-booking/home-event/home-event.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToolComponent } from './tool/tool.component';
@@ -13,15 +12,12 @@ import { FavorisProductsComponent } from './favoris-products/favoris-products.co
 import { PanierProductsComponent } from './panier-products/panier-products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { BuySellComponent } from './buy-sell/buy-sell.component';
 import { BuyComponent } from './buy/buy.component';
 import { SellComponent } from './sell/sell.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
-
 import { BookEventComponent } from './events-booking/book-event/book-event.component';
-
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
@@ -34,7 +30,6 @@ const ROUTES: Routes = [
     {path: 'panier', component: PanierProductsComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'buysell', component: BuySellComponent},
     {path: 'buy', component: BuyComponent},
     {path: 'sell', component: SellComponent},
     {path: 'mesCommandes', component: ListePanierCompComponent},
@@ -42,8 +37,7 @@ const ROUTES: Routes = [
     {path: 'event', component: HomeEventComponent},
     {path: 'book/:id', component: BookEventComponent},
     {path: 'map/:id', component: MapComponent},
-    {path: 'welcome/:id', component: WelcomeBookComponent}
-
+    {path: 'welcome/:id', component: WelcomeBookComponent},
 ];
 
 @NgModule({
@@ -56,7 +50,6 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     LoginComponent,
     RegisterComponent,
-    BuySellComponent, 
     BuyComponent,
     SellComponent,
     HomeEventComponent,
@@ -65,8 +58,7 @@ const ROUTES: Routes = [
     CommandeDetailsCompComponent,
     BookEventComponent,
     MapComponent,
-    WelcomeBookComponent
-    
+    WelcomeBookComponent,
   ],
   imports: [
       BrowserModule,
