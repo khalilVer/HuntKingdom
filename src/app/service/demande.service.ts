@@ -2,53 +2,56 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
-import {Demande} from '../Model/demande';
+import {Sell} from '../Model/sell';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DemandeService {
+
   // Define API
   apiURL = 'pi/hunterskingdom/web/app_dev.php/api';
+
   // Http Options
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
   };
+
   constructor(private http: HttpClient) { }
-  getDemandes(): Observable<Demande> {
-    return this.http.get<Demande>( this.apiURL + '/demandes')
+  getProducts(): Observable<Sell> {
+    return this.http.get<Sell>( this.apiURL + '/sells')
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
-  createDemande(demande): Observable<Demande> {
-    return this.http.post<Demande>(this.apiURL + '/demandes/new', JSON.stringify(demande), this.httpOptions)
+  createOffre(sell): Observable<Sell> {
+    return this.http.post<Sell>(this.apiURL + '/sell/new', JSON.stringify(sell), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
-  deleteDemande(id) {
-    return this.http.delete<Demande>(this.apiURL + '/demandes/' + id + '/delete', this.httpOptions)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
-  }
-
-  getDemande(id): Observable<Demande> {
-    return this.http.get<Demande>(this.apiURL + '/demandes/' + id)
+  deleteProduct(id) {
+    return this.http.delete<Sell>(this.apiURL + '/sell/' + id + '/delete', this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
 
-  updateDemande(id, demande): Observable<Demande> {
-    return this.http.put<Demande>(this.apiURL + '/demandes/' + id + '/edit' , JSON.stringify(demande), this.httpOptions)
+  getProduct(id): Observable<Sell> {
+    return this.http.get<Sell>(this.apiURL + '/sell/' + id)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  updateProduct(id, sell): Observable<Sell> {
+    return this.http.put<Sell>(this.apiURL + '/sell/' + id + '/edit' , JSON.stringify(sell), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -67,5 +70,11 @@ export class DemandeService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-
+  getByCategorie(categorie): Observable<Sell> {
+    return this.http.get<Sell>( this.apiURL + '/sell/categories/' + categorie)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
 }

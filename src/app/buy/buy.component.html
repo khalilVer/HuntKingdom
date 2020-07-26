@@ -35,7 +35,7 @@
                 <h5><b>Expire le : </b>{{p.deadline}}</h5>
                 <h5><b>Disponible à :</b> {{p.adresse}}</h5>
                 <h5><b>Catégorie : </b>{{p.categorie}}</h5>
-                <button class="btn btn-primary" (click)="generatePdf()">J'achète</button>
+                <button class="btn btn-primary" (click)="generatePdf(p)">J'achète</button>
                 <div class="alert alert-secondary" role="alert">
                   <b>Etat : </b>{{p.etat}}
                 </div>

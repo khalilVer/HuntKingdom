@@ -3,6 +3,8 @@ import {OffreService} from '../service/offre.service';
 import {Router} from '@angular/router';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import {Produit} from '../Model/produit';
+import {Buy} from '../Model/buy';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -15,6 +17,7 @@ export class BuyComponent implements OnInit {
   constructor(private offreService: OffreService, public router: Router) { }
   Offres: any = [];
   categorie: string;
+  b: Array<Buy> = [];
 
 
   ngOnInit() {
@@ -26,7 +29,6 @@ export class BuyComponent implements OnInit {
       this.Offres = data;
     });
   }
-
   deleteOffre(id) {
     if (window.confirm('Are you sure, you want to delete?')) {
       this.offreService.deleteProduct(id).subscribe(data => {
@@ -39,10 +41,13 @@ export class BuyComponent implements OnInit {
     this.offreService.getByCategorie(categorie).subscribe(data => {
       this.loadOffres();
     });  }
-  generatePdf() {
+  generatePdf(offres) {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
     if (window.confirm('Voulez-vous confimer votre achat? ')) {
       pdfMake.createPdf(documentDefinition).download();
+    }
+    for (let i = 0; i < this.b.length; i++) {
+        this.b[i].etat = 'Acheté' ;
     }
   }
 }
