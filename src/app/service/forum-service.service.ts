@@ -6,6 +6,8 @@ import { retry, catchError } from 'rxjs/operators';
 import { Overwatch } from '../Model/overwatch';
 import { notification } from '../Model/notification';
 import { threaddetail } from '../Model/threaddetail';
+import { report } from '../Model/report';
+
 
 
 @Injectable({
@@ -66,6 +68,11 @@ export class ForumServiceService {
         return this.http.post<Overwatch>(this.apiURL + '/overwatchreport/new', JSON.stringify(report), this.httpOptions);
     }
 
+    submitUserReport(report) {
+        return this.http.post<report>(this.apiURL + '/userreport/new', JSON.stringify(report), this.httpOptions);
+    }
+
+
     createThreaddetail(detail) {
         return this.http.post<threaddetail>(this.apiURL + '/threaddetail/new', JSON.stringify(detail), this.httpOptions);
     }
@@ -106,6 +113,20 @@ export class ForumServiceService {
                 catchError(this.handleError)
             );
     }
+
+    checkVote(user,threadid): Observable<Thread> {
+        return null;
+    }
+
+
+    checkThreadReport(user,threadid,subjecttype): Observable<report> {
+        return this.http.get<report>(this.apiURL + '/checkreport/' + threadid + '/' + user + '/' + subjecttype)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
+
 
 
 

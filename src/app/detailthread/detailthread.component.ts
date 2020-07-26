@@ -12,16 +12,26 @@ import { threaddetail } from '../Model/threaddetail';
 export class DetailthreadComponent implements OnInit {
 
   id = this.actRoute.snapshot.params['id'];
+  Threadreport: any = [];
   thread: any = {};
   comments: any = [];
   comment = { threadid: '', comment: '', writer: 'gslema', upvote: '0', downvote: '0' };
-  report = { type: '', reason: '', subject_id: '', report_nb: '0', userid: 'gslema' };
+  report = { type: '', reason: '', subject_id: '', report_nb: '1', userid: '' };
+  alreadyReported: string;
+  alreadyVoted: boolean = false;
+  currentuser: any = 'aahmed';
+  tempcheck : string;
+
+  userrep = { subject: '', user: '', subjectid: '' };
 
 
   constructor(public actRoute: ActivatedRoute, private threadService: ForumServiceService, public router: Router) { }
 
   ngOnInit() {
 
+
+    this.checkThreadReport();
+    this.checkVote();
     this.loadThread();
     this.loadComments();
 
@@ -49,9 +59,10 @@ export class DetailthreadComponent implements OnInit {
     if (this.comment.comment != '') {
 
       this.comment.threadid = this.id;
-      window.alert("Your comment has been added successfully");
       this.threadService.createThreaddetail(this.comment).subscribe((data: {}) => {
-        this.loadComments();
+        window.location.href = "detailthread/" + this.id;
+        //this.ngOnInit();
+
       });
     }
     else {
@@ -59,20 +70,82 @@ export class DetailthreadComponent implements OnInit {
     }
   }
 
-  reportThread() {
+  checkVote() {
+    this.threadService.getThread(this.id).subscribe((data) => {
+      this.thread = data;
 
-    if (this.comment.comment != '') {
-      var reason: string;
-      if (reason = window.prompt('Are you sure, you want to delete? Please enters the reason to notifty the creator of this thread')) {
-        this.report.type = 'Thread';
-        this.report.reason = reason;
-        this.report.subject_id = this.id;
-        console.log(this.report);
-        this.threadService.submitReport(this.report).subscribe();
+    });
+  }
+
+  checkThreadReport() {
+    this.threadService.checkThreadReport(this.currentuser, this.id, 'Thread').subscribe((data: {}) => {
+      this.Threadreport = data;
+      console.log('data : ', this.Threadreport[0]);
+      if (this.Threadreport[0] != undefined) {
+        this.alreadyReported = 'true';
       }
+      else {
+        this.alreadyReported = 'false';
+      }
+
+      console.log('reported :', this.alreadyReported);
+
+    });
+  }
+
+  checkCommentReport() {
+    this.threadService.checkThreadReport(this.currentuser, this.id, 'Thread Comment').subscribe((data: {}) => {
+      this.Threadreport = data;
+      console.log('data : ', this.Threadreport[0]);
+      if (this.Threadreport[0] != undefined) {
+        return 'true';
+      }
+      else {
+        return 'false';
+      }
+    });
+
+  }
+
+  reportThread(creatoruser) {
+
+    var reason: string;
+    if (reason = window.prompt('Are you sure, you want to report this Thread?')) {
+      this.report.type = 'Thread';
+      this.report.reason = reason;
+      this.report.subject_id = this.id;
+      this.report.userid = creatoruser;
+      this.threadService.submitReport(this.report).subscribe();
+
+
+      this.userrep.user = this.currentuser;
+      this.userrep.subjectid = this.id;
+      this.userrep.subject = 'Thread';
+      this.threadService.submitUserReport(this.userrep).subscribe();
     }
+    window.alert("Your report has been submitted successfully")
+    this.ngOnInit();
+
+  }
+
+  reportComment(creatoruser, commentid) {
+
+    var reason: string;
+    if (reason = window.prompt('Are you sure, you want to report this Comment?')) {
+      this.report.type = 'Thread Comment';
+      this.report.reason = reason;
+      this.report.subject_id = commentid;
+      this.report.userid = creatoruser;
+      this.threadService.submitReport(this.report).subscribe();
 
 
+      this.userrep.user = this.currentuser;
+      this.userrep.subjectid = commentid;
+      this.userrep.subject = 'Thread Comment';
+      this.threadService.submitUserReport(this.userrep).subscribe();
+    }
+    window.alert("Your report has been submitted successfully")
+    window.location.href = "detailthread/" + this.id;
 
   }
 
