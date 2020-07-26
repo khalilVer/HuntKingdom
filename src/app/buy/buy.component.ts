@@ -42,6 +42,10 @@ export class BuyComponent implements OnInit {
       this.loadOffres();
     });  }
   generatePdf(offres) {
+
+      this.categorie = categorie;
+  }
+  generatePdf() {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
     if (window.confirm('Voulez-vous confimer votre achat? ')) {
       pdfMake.createPdf(documentDefinition).download();
