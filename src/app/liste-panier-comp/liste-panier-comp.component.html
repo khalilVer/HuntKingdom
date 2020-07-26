@@ -38,8 +38,8 @@
         <td>{{p.date_achat}}</td>
         <td>{{p.products.length}}</td>
         <td>{{p.is_valid}}</td>
+        <td><button class="btn btn-danger waves-effect" (click)="deleteCommande(p.id)">DELETE</button></td>
         <td><a routerLink="/commandeDetails/{{p.id}}">details</a></td>
-        <td><button class="btn btn-danger waves-effect" [disabled]="p.is_valid"  (click)="deleteCommande(p.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 
     </tr>
     </tbody>
