@@ -24,7 +24,7 @@ import { BookEventComponent } from './events-booking/book-event/book-event.compo
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapComponent } from './events-booking/map/map.component';
-import { WelcomeBookComponent } from './welcome-book/welcome-book.component';
+import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
 
 
 const ROUTES: Routes = [
@@ -42,9 +42,7 @@ const ROUTES: Routes = [
     {path: 'event', component: HomeEventComponent},
     {path: 'book/:id', component: BookEventComponent},
     {path: 'map/:id', component: MapComponent},
-
-
-
+    {path: 'welcome/:id', component: WelcomeBookComponent}
 
 ];
 
