@@ -27,7 +27,7 @@
       <div class="product-list" class="col-lg-9 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
         <br>
         <div class="row">
-          <div class="col-lg-4 col-sm-6" *ngFor="let p of Offres ">
+          <div class="col-lg-4 col-sm-6" *ngFor="let p of Offres | filter:categorie">
             <div class="card" style="width: 18rem;" *ngIf="p.etat=='En cours'">
               <div class="card-body">
                 <h3 class="card-title">{{p.titre}}</h3>
@@ -35,7 +35,7 @@
                 <h5><b>Expire le : </b>{{p.deadline}}</h5>
                 <h5><b>Disponible à :</b> {{p.adresse}}</h5>
                 <h5><b>Catégorie : </b>{{p.categorie}}</h5>
-                <button class="btn btn-primary">J'achète</button>
+                <button class="btn btn-primary" (click)="generatePdf()">J'achète</button>
                 <div class="alert alert-secondary" role="alert">
                   <b>Etat : </b>{{p.etat}}
                 </div>

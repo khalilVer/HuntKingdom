@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {OffreService} from '../service/offre.service';
 import {Router} from '@angular/router';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-buy',
@@ -36,5 +39,10 @@ export class BuyComponent implements OnInit {
     this.offreService.getByCategorie(categorie).subscribe(data => {
       this.loadOffres();
     });  }
-
+  generatePdf() {
+    const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
+    if (window.confirm('Voulez-vous confimer votre achat? ')) {
+      pdfMake.createPdf(documentDefinition).download();
+    }
+  }
 }
