@@ -50,6 +50,13 @@ export class CommandeServiceService {
                 catchError(this.handleError)
             );
     }
+    deleteCommande(id) {
+        return this.http.delete<Commande>(this.apiURL + '/commandes/' + id + '/delete', this.httpOptions)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+    }
     // Error handling
     handleError(error) {
         let errorMessage = '';

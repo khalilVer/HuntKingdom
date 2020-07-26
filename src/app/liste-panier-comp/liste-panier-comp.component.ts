@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class ListePanierCompComponent implements OnInit {
 
   commande: any = [];
-  id: number = 1 ;
+  id: number = Number(localStorage.getItem('id')) ;
   constructor(private produitService: ProduitServiceService, private commandeService: CommandeServiceService, public router: Router) { }
   ngOnInit() {
     this.loadCommandes(this.id);
@@ -22,6 +22,14 @@ export class ListePanierCompComponent implements OnInit {
         return this.commandeService.getCommandesByUser(id).subscribe((data: {}) => {
             this.commande = data;
         });
+    }
+
+    deleteCommande(id) {
+        if (window.confirm('Are you sure, you want to delete?')) {
+            this.commandeService.deleteCommande(id).subscribe(data => {
+                this.loadCommandes(this.id);
+            });
+        }
     }
 
 }

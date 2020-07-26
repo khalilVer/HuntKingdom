@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 })
 export class ShopCompComponent implements OnInit {
 
-
     categorie: string;
     clicked: boolean = false;
     Produits: any = [];
@@ -26,6 +25,12 @@ export class ShopCompComponent implements OnInit {
         return this.produitService.getProducts().subscribe((data: {}) => {
             this.Produits = data;
         });
+    }
+    checkConnected(): boolean{
+        if (localStorage.length !== 0) {
+            return false;
+        }
+        return true;
     }
     ajouterPannier(produit) {
         produit.quantiteT = 1;

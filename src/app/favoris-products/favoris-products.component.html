@@ -16,8 +16,10 @@
     </div>
 
 
+
     <div class="product-list">
         <br>
+        <h4 *ngIf="checkEmptyFavoris() == true">Your favorite products list is empty</h4>
 
         <div class="row">
             <div class="col-lg-4 col-sm-6" *ngFor="let p of products">
@@ -41,6 +43,7 @@
                     </div>
                 </div>
             </div>
+            <br>
         </div>
     </div>
 </div>

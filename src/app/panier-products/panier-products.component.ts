@@ -11,8 +11,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./panier-products.component.css']
 })
 export class PanierProductsComponent implements OnInit {
+    connectedUser: boolean;
     pannierFinal: Array<Produit> = [];
-    id: number = 1 ;
+    id: number = Number(localStorage.getItem('id')) ;
     lastCommande: any;
     pannier: Array<Produit> = [];
     prixTotal: number = 0;
@@ -21,9 +22,16 @@ export class PanierProductsComponent implements OnInit {
     constructor(private produitService: ProduitServiceService, private commandeService: CommandeServiceService, public router: Router) { }
   ngOnInit() {
       this.loadPannier();
+      //recuperer la derniere ligne de la table commande pour obtenir le dernier code du commande
       this.commandeService.getLastCommande(0).subscribe((data: {}) => {
           this.lastCommande = data;
       });
+      if (localStorage.length === 0) {
+          this.viderCommande();
+          this.connectedUser = true;
+      } else {
+          this.connectedUser = false ;
+      }
   }
 
     // Get pannier

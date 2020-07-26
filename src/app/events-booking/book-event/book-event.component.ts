@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 
 
+
 import { Component, OnInit, Input } from '@angular/core';
 import { Event } from 'src/app/Model/event';
 

@@ -1,61 +1,4 @@
-<!--
-<div class="body">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>type</th>
-                <th>adresse</th>
-                <th>latitude</th>
-                <th>langitude</th>
-                <th>dateDebut</th>
-                <th>dateFin</th>
-                <th>nbrParticipent</th>
-                <th>placeDispo</th>
-                <th>categorie</th>
 
-                
-            </tr>
-            </thead>
-            <tbody >
-            <tr *ngFor="let p of events">
-                <td>{{p.id}}</td>
-                <td>{{p.nom}}</td>
-                <td>{{p.type}}</td>
-                <td>{{p.adresse}}</td>
-                <td>{{p.latitude}}</td>
-                <td>{{p.langitude}}</td>
-                <td>{{p.date_debut}}</td>
-                <td>{{p.date_fin}}</td>
-                <td>{{p.nbr_participent}}</td>
-                <td>{{p.place_dispo}}</td>
-                <td>{{p.categorie?.nom}}</td>
-
-               
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    -->
-    
-    <!--
-
-      <div class="col-md-4"  *ngFor="let p of events">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body" >
-            
-      <div class="row">
-            <h5 class="card-title">{{p.nom}}</h5>
-            <p class="card-text"> {{p.id}}-- {{p.place_dispo}} dt</p>
-      </div>
-            
-          </div>
-        </div>
-      </div>
--->
-      
 
 
 
@@ -125,15 +68,27 @@
                                     <div class="event_title"><b style="color: #fd7e14;">Number of Participants :</b> {{p.nbr_participent}}</div>
                                     <div class="event_title"><b style="color: #fd7e14;">Available Place :</b> {{p.place_dispo}}</div>
                                     <div class="event_title"><b style="color: #fd7e14;">Category Name :</b>{{p.categorie?.nom}}</div>
-                                    <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{p.description }}
-                                    </div>
+                                    <div class="event_text" > <b style="color: #fd7e14;">Description : </b>{{p.description }} </div>
+                                    
                                     
                                     <div class="event_buttons">
-                                        <div button type="button" class="btn btn-outline-success" [disabled]="p.place_dispo==0"
+                                        <button  class="btn btn-outline-success" [disabled]="p.place_dispo==0"  >
                                         
-                                        ><a [routerLink]="['/book',p.id]" style="color: #fd7e14;"> Book Now!</a> </div>
-                                        <div button type="button" class="btn btn-outline-warning" >Find The Event Place</div>
-                                        <button class="btn btn-outline-info" >like: </button>
+                                        <a [routerLink]="['/book',p.id]" style="color: #fd7e14;"> Book Now!</a> 
+                                    
+                                        </button>
+                                        
+                                        
+
+                                        <button type="button" class="btn btn-outline-warning" >
+                                        <a [routerLink]="['/map',p.id]" style="color: #fd7e14;">Find The Event Place</a></button>
+
+                                        <button class="btn btn-outline-info"(click)="increment(p)" >Like : {{p.like ? p.like : 0}} </button>
+
+                                        <button class="btn btn-outline-danger" (click)= "deccrement(p)">Dislike : {{ p.dislke ? p.dislke : 0 }} </button>
+                                       
+                                       
+                                        <div *ngIf="p.place_dispo==0" > <span style="font-size: 40px; font-weight: bold; color: red;">Sorry There is no place</span></div>
 
                                     </div>
                                 </div>
