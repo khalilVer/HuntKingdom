@@ -3,25 +3,22 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1">
                 <div class="blog-sidebar">
-                    <div class="search-form">
-                        <h4>Search</h4>
-                        <form>
-                            <input type="text" placeholder="Search . . .  ">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
+                  
                     <div class="blog-catagory">
                         <h4>Categories</h4>
                         <ul>
-                            <li><a href="#">Fishing</a></li>
-                            <li><a href="#">Hunting</a></li>
+                             <li><a><button style="border:none;background-color: transparent" (click)="searchByCategorie('')">All</button></a></li>
+                             <li><a><button style="border:none;background-color: transparent" (click)="searchByCategorie('Chasse au fusil')">Chasse au fusil</button></a></li>
+                             <li><a><button style="border:none;background-color: transparent" (click)="searchByCategorie('Chasse sous marin')">Chasse sous marin</button></a></li>
+                              <li><a><button style="border:none;background-color: transparent" (click)="searchByCategorie('Chasse au filet')">Chasse au filet</button></a></li>
+                              <li><a><button style="border:none;background-color: transparent" (click)="searchByCategorie('Pêche à la canne')">Pêche à la canne</button></a></li>
                         </ul>
                     </div>
 
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
-                <div *ngFor="let p of Threads">
+                <div *ngFor="let p of Threads | filter:topic">
                     <p-panel>
                         <p-header>
                             <div class="ui-helper-clearfix">
