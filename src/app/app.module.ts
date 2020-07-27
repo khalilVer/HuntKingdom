@@ -21,7 +21,9 @@ import { BookEventComponent } from './events-booking/book-event/book-event.compo
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
-
+import { FilterPipe } from './events-booking/filter.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -59,13 +61,17 @@ const ROUTES: Routes = [
     BookEventComponent,
     MapComponent,
     WelcomeBookComponent,
+    FilterPipe,
+   
   ],
   imports: [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule,
-      Ng2SearchPipeModule
+      Ng2SearchPipeModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],

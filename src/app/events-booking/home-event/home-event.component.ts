@@ -11,6 +11,7 @@ import { Event } from 'src/app/Model/event';
 export class HomeEventComponent implements OnInit {
 
   events : any = [];
+  filteredStatus  :'';
   constructor(private eventService: EventService) { }
 ngOnInit() {
     this.loadEvents();
@@ -35,7 +36,7 @@ ngOnInit() {
   }
   deccrement(event: Event) {
     this.eventService.dislikeEvent(event).subscribe((data) => {
-      event.dislke = data['dislike'];
+      event.dislike = data['dislike'];
       console.log('Event', event);
     })
   }

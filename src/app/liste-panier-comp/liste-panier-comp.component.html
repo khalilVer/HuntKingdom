@@ -26,8 +26,8 @@
         <th>DATE ACHAT</th>
         <th>Nbr PRODUITS</th>
         <th>VALIDE</th>
-        <th>DELETE</th>
         <th>DETAILS</th>
+        <th>DELETE</th>
     </tr>
     </thead>
     <tbody>
@@ -37,9 +37,10 @@
         <td>{{p.prix_total}}</td>
         <td>{{p.date_achat}}</td>
         <td>{{p.products.length}}</td>
-        <td>{{p.is_valid}}</td>
-        <td><button class="btn btn-danger waves-effect" (click)="deleteCommande(p.id)">DELETE</button></td>
+        <td *ngIf="p.is_valid == true; else elseBlock"><i class="fa fa-eye" aria-hidden="true"></i></td>
+        <ng-template #elseBlock><td><i class="fa fa-eye-slash" aria-hidden="true"></i></td></ng-template>
         <td><a routerLink="/commandeDetails/{{p.id}}">details</a></td>
+        <td><button class="btn btn-danger waves-effect" [disabled]="p.is_valid"  (click)="deleteCommande(p.id)"><i class="fa fa-trash" aria-hidden="true"></i></button></td>
 
     </tr>
     </tbody>
