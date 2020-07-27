@@ -1,0 +1,51 @@
+<section class="checkout-section spad">
+    <div class="container">
+        <div action="#" class="checkout-form">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div _ngcontent-qvb-c5="" class="blog-detail-title">
+                        <h2 _ngcontent-qvb-c5="">Share your story with others for a better experience</h2>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="thread.topic">
+                                <option value="" selected disabled>Select a category..</option>
+                                <option value="Chasse au fusil">Chasse au fusil</option>
+                                <option value="Chasse sous marin">Chasse sous marin</option>
+                                <option value="Pêche à la canne">Pêche à la canne</option>
+                                <option value="Chasse au filet">Chasse au filet</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-12">
+                            <hr>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="cun">Title<span>*</span></label>
+                            <input type="text" id="cun" [(ngModel)]="thread.title">
+                            <hr>
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="street">Content<span>*</span></label>
+                        </div>
+
+                        <div class="col-lg-12">
+                         <!--   <p-editor [style]="{'height':'320px'}" [(ngModel)]="thread.description"></p-editor>--> 
+                         <div class="form-group">
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="9" [(ngModel)]="thread.description"></textarea>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <br>
+                        </div>
+                        <div class="col-lg-12">
+                            <button type="submit" class="site-btn" (click)="addThread()">Submit Thread</button>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
