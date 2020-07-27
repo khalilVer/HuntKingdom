@@ -35,7 +35,7 @@
                 <h5><b>Expire le : </b>{{p.deadline}}</h5>
                 <h5><b>Lieu :</b> {{p.adresse}}</h5>
                 <h5><b>Catégorie : </b>{{p.categorie}}</h5>
-                <button class="btn btn-primary">Disponible</button>
+                <button class="btn btn-primary" [disabled]="checkConnected()">Disponible </button>
                 <div class="alert alert-secondary" role="alert">
                   <b>Etat : </b>{{p.etat}}
                 </div>
