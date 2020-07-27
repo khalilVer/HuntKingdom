@@ -15,11 +15,13 @@ export class FavorisProductsComponent implements OnInit {
     favoris: Array<any> = [];
     fav: Array<Favoris> = [];
     products: Array<Produit> = [];
-    id: number = 1 ;
+    id: number = Number(localStorage.getItem('id')) ;
     constructor(private favorisService: FavorisService, private produitService: ProduitServiceService, public router: Router) { }
 
   ngOnInit() {
-      this.loadFavoris(this.id);
+        if (localStorage.length !== 0) {
+            this.loadFavoris(this.id);
+        }
   }
 
     // Get favoris list
@@ -33,6 +35,12 @@ export class FavorisProductsComponent implements OnInit {
         });
     }
 
+    checkEmptyFavoris(): boolean {
+        if (this.favoris.length === 0) {
+            return true;
+        }
+        return false;
+    }
     ajouterPannier(produit) {
         produit.quantiteT = 1;
         produit.clicked = true;

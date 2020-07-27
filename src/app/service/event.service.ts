@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
+import { Event } from '../Model/event';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,8 +33,8 @@ export class EventService {
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<any[]> {
-    return this.http.get<any[]>( this.apiURL +'/getall')
+  getEvents(): Observable<any> {
+    return this.http.get<any>( this.apiURL +'/getall')
         .pipe(
             retry(1),
             catchError(this.handleError)
@@ -44,6 +45,21 @@ export class EventService {
 
 getEvent(id): Observable<Event> {
     return this.http.get<Event>(this.apiURL + '/get/' + id)
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
+}
+
+likeEvent(event: Event) {
+    return this.http.put(this.apiURL + '/like/' + event.id, {})
+        .pipe(
+            retry(1),
+            catchError(this.handleError)
+        );
+}
+dislikeEvent(event: Event) {
+    return this.http.put(this.apiURL + '/disike/' + event.id, {})
         .pipe(
             retry(1),
             catchError(this.handleError)

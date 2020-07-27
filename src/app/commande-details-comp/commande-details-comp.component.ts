@@ -15,7 +15,8 @@ export class CommandeDetailsCompComponent implements OnInit {
     commandeData: any = {};
     products: any =  [];
     productsFinal: Array<Produit> = [];
-    constructor( public router: Router, public actRoute: ActivatedRoute, private commandeService: CommandeServiceService, private produitService: ProduitServiceService) { }
+    constructor( public router: Router, public actRoute: ActivatedRoute, private commandeService: CommandeServiceService,
+                 private produitService: ProduitServiceService) { }
 
   ngOnInit() {
       this.commandeService.getcommande(this.id).subscribe((data: {}) => {
@@ -28,19 +29,6 @@ export class CommandeDetailsCompComponent implements OnInit {
   }
 
   adjustproductsList() {
-        //for (let i = 0; i < this.products.length; i++) {
-         //let occ: number = 1 ;
-           // for (let j = i; j < this.products.length; j++) {
-            //  if (this.products[i].id === this.products[j].id && i === 0) {
-              //    occ = occ + 1;
-             // }
-             // if (this.products[i].id === this.products[j].id) {
-              //    occ = occ + 1;
-              //    this.products.splice(j, 1);
-             // }
-         // }
-         // this.products[i].quantiteT = occ ;
-      //}
 
       for (let i = 0; i < this.products.length; i++) {
         let occ: number = 0 ;

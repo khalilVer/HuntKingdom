@@ -15,6 +15,7 @@
             </div>
             <div class="ht-right">
                 <a routerLink="/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
+                <a class="login-panel"><button style="border:none;background-color: transparent" (click)="logOutMehtod()">Logout</button><i class="fa fa-user"></i></a>
                 <div class="lan-selector">
                     <select class="language_drop" name="countries" id="countries" style="width:300px;">
                         <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
@@ -55,20 +56,28 @@
                 <div class="col-lg-3 text-right col-md-3">
                     <ul class="nav-right">
                         <li></li>
-                        <li class="heart-icon">
+                        <li class="heart-icon" *ngIf="connected == true">
                             <a routerLink="/favoris">
                                 <i class="fa fa-heart-o heart fa-lg"></i>
                                 <h6 class="favoris-text">Favoris</h6>
                             </a>
                         </li>
                         <li></li>
-                        <li class="cart-icon">
+                        <li class="cart-icon" *ngIf="connected == true">
                             <a routerLink="/panier">
-                                <i class="fa fa-shopping-cart heart fa-lg"></i>
+                                <i class="fa fa-shopping-basket heart fa-lg"></i>
                                 <h6 class="favoris-text">Panier</h6>
                             </a>
 
                         </li>
+                        <li></li>
+
+                        <li class="heart-icon">
+                            <a >
+                                <h6 style="color: white">{{username}}</h6>
+                            </a>
+                        </li>
+                        <li></li>
 
                     </ul>
                 </div>

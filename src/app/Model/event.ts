@@ -4,14 +4,14 @@ export class Event {
     nom: string;
     type : string;
     adresse : string;
-    latitude : string;
-    langitude : string;
+    latitude : number;
+    langitude : number;
     dateDebut : Date ;
     dateFin : Date;
     nbrParticipent: number;
     placeDispo: number;
     categorie: Categorie;
     description : String;
-
-
+    like: number;
+    dislike: number;
 }
