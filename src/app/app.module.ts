@@ -29,7 +29,6 @@ import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
 import { FilterPipe } from './events-booking/filter.pipe';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const ROUTES: Routes = [
