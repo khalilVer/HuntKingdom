@@ -3,7 +3,6 @@ import {OffreService} from '../service/offre.service';
 import {Router} from '@angular/router';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import {Produit} from '../Model/produit';
 import {Buy} from '../Model/buy';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -44,9 +43,6 @@ export class BuyComponent implements OnInit {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
     if (window.confirm('Voulez-vous confimer votre achat? ')) {
       pdfMake.createPdf(documentDefinition).download();
-    }
-    for (let i = 0; i < this.b.length; i++) {
-        this.b[i].etat = 'Acheté' ;
     }
   }
 }

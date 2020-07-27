@@ -70,11 +70,4 @@ export class DemandeService {
     window.alert(errorMessage);
     return throwError(errorMessage);
   }
-  getByCategorie(categorie): Observable<Sell> {
-    return this.http.get<Sell>( this.apiURL + '/sell/categories/' + categorie)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
-  }
 }
