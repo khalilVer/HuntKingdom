@@ -75,8 +75,6 @@ const ROUTES: Routes = [
     DetailthreadComponent,
     MapComponent,
     WelcomeBookComponent,
-
-    FilterPipe
   ],
   imports: [
       BrowserModule,

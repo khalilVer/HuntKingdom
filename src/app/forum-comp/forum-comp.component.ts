@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ForumCompComponent implements OnInit {
 
   Threads: any = [];
+  topic: string;
 
   constructor(private threadService: ForumServiceService,  public router: Router) { }
 
@@ -22,5 +23,9 @@ export class ForumCompComponent implements OnInit {
         this.Threads = data;
     });
   }
+
+  searchByCategorie(topic) {
+    this.topic = topic;
+}
 
 }
