@@ -19,11 +19,18 @@ import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
 import { BookEventComponent } from './events-booking/book-event/book-event.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ForumCompComponent } from './forum-comp/forum-comp.component';
+import { SharestoryComponent } from './sharestory/sharestory.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PanelModule} from 'primeng/panel';
+import {EditorModule} from 'primeng/editor';
+import { DetailthreadComponent } from './detailthread/detailthread.component';
 import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
 import { FilterPipe } from './events-booking/filter.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -37,9 +44,14 @@ const ROUTES: Routes = [
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
+    {path: 'book', component: BookEventComponent},
+    {path: 'forum', component: ForumCompComponent},
     {path: 'book/:id', component: BookEventComponent},
+    {path: 'sharestory', component: SharestoryComponent},
+    {path: 'detailthread/:id', component: DetailthreadComponent},
     {path: 'map/:id', component: MapComponent},
-    {path: 'welcome/:id', component: WelcomeBookComponent},
+    {path: 'welcome/:id', component: WelcomeBookComponent}
+
 ];
 
 @NgModule({
@@ -59,10 +71,13 @@ const ROUTES: Routes = [
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
     BookEventComponent,
+    ForumCompComponent,
+    BookEventComponent,
+    SharestoryComponent,
+    DetailthreadComponent,
     MapComponent,
     WelcomeBookComponent,
-    FilterPipe,
-   
+    FilterPipe
   ],
   imports: [
       BrowserModule,
@@ -71,6 +86,8 @@ const ROUTES: Routes = [
       HttpClientModule,
       Ng2SearchPipeModule,
       BrowserAnimationsModule,
+      PanelModule,
+      EditorModule,
       ToastrModule.forRoot()
   ],
   providers: [],

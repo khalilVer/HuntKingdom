@@ -1,0 +1,91 @@
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="breacrumb-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="breadcrumb-text">
+                                <a routerLink="/forum"><i class="fa fa-book"></i> Forum</a>
+                                <span>Thread</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="blog-details-inner">
+                    <div class="blog-detail-title">
+                        <h2>{{thread.title}}</h2>
+                        <p>{{thread.topic}} <span>- {{thread.creationdate}}</span></p>
+                    </div>
+                    <div class="blog-large-pic">
+                    </div>
+                    <div class="blog-detail-desc">
+                        <p>{{thread.description}}
+                        </p>
+                    </div>
+                    <div class="blog-more">
+                        <div class="row">
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-4">
+                            </div>
+                            <div class="col-sm-4">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div *ngFor="let c of comments">
+                        <div class="posted-by" style=" background-color: rgb(215, 224, 228);">
+                            <div class="pb-pic">
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="reportComment(c.writer,c.id)">Report</button>
+                            </div>
+                            <div class="pb-text">
+                                <h5>{{c.writer}}</h5>
+                                <p>{{c.comment}}</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="leave-comment">
+                        <h4><button type="button"
+                                [class]="like == '' ? 'btn btn-outline-success' : like == 'false' ? 'btn btn-outline-success' : 'btn btn-success' "
+                                [disabled]="like == 'true'" (click)="addVote('true')">Up
+                                Vote</button> &nbsp;
+                            <button type="button"
+                                [class]="like != '' ? (like == 'false' ? 'btn btn-danger' : 'btn btn-outline-danger') : 'btn btn-outline-danger'"
+                                (click)="addVote('false')" [disabled]="like == 'false'">Down
+                                Vote</button>
+                            &nbsp;&nbsp;<span> Current votes: {{calculatevote(thread.upvote,thread.downvote)}} </span>
+                        </h4>
+
+
+                        <hr>
+                        <div class="comment-form">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <textarea placeholder="Enters your comment here.."
+                                        [(ngModel)]="comment.comment"></textarea>
+                                    <button type="submit" class="site-btn" (click)="addComment()">Submit
+                                        message</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-dark"
+                                        (click)="reportThread(thread.creatoruser)"
+                                        [hidden]="alreadyReported == 'true'">Report Thread</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
