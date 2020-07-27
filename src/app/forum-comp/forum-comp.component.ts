@@ -28,4 +28,11 @@ export class ForumCompComponent implements OnInit {
     this.topic = topic;
 }
 
+  isConnected(): boolean{
+    if (localStorage.length == 0) {
+      return false;
+    }
+    return true;
+  }
+
 }
