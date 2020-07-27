@@ -2,7 +2,6 @@ import { EventService } from './../../service/event.service';
 import { BookService } from './../../service/book.service';
 import { Reservation } from './../../Model/reservation';
 import {ActivatedRoute, Router} from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -21,7 +20,7 @@ export class BookEventComponent implements OnInit {
 
   reservationetDetails = { nom: '', prenom: '',telephone: '', email :'', event: '' }
 
-  constructor(public actRoute: ActivatedRoute, private eventService: EventService, private produitService: BookService, public router: Router,private toastr: ToastrService) { }
+  constructor(public actRoute: ActivatedRoute, private eventService: EventService, private produitService: BookService, public router: Router) { }
 
 ngOnInit() {
   this.eventService.getEvent(this.id).subscribe((data) => {
@@ -34,7 +33,6 @@ ngOnInit() {
     console.log('this.reservationetDetails', this.reservationetDetails);
     this.reservationetDetails.event = this.id;
       this.produitService.createReservation(this.reservationetDetails).subscribe((data: {}) => {
-        this.toastr.success('Your reservation is made successfully', 'Welcome!');
         this.router.navigate(['/event']);
 
       });

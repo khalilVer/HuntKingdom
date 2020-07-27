@@ -28,7 +28,6 @@ import { DetailthreadComponent } from './detailthread/detailthread.component';
 import { MapComponent } from './events-booking/map/map.component';
 import { WelcomeBookComponent } from './events-booking/welcome-book/welcome-book.component';
 import { FilterPipe } from './events-booking/filter.pipe';
-import { ToastrModule } from 'ngx-toastr';
 
 
 const ROUTES: Routes = [
@@ -84,10 +83,11 @@ const ROUTES: Routes = [
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule,
       Ng2SearchPipeModule,
+      
       BrowserAnimationsModule,
       PanelModule,
       EditorModule,
-      ToastrModule.forRoot()
+     
   ],
   providers: [],
   bootstrap: [AppComponent],
