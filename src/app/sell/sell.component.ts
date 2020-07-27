@@ -35,10 +35,4 @@ export class SellComponent implements OnInit {
   searchByCategorie(categorie) {
     this.categorie = categorie;
   }
-  checkConnected(): boolean {
-  if (localStorage.length !== 0) {
-    return false;
-  }
-  return true;
-}
 }
