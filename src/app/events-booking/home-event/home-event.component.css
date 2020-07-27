@@ -399,8 +399,8 @@
 }
 .event_image_container
 {
-	width: 100%;
-	height: 100%;
+	width: 50%;
+	height: 10%;
 }
 .date_container
 {
@@ -412,6 +412,17 @@
 {
 	display: block;
 	position: relative;
+}
+.background_image
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
 }
 .date_content
 {
@@ -465,7 +476,8 @@
 
 .event_buttons
 {
-    color: #fd7e14;
+	color: #fd7e14;
+	
 	margin-top: 48px;
 }
 .event_button

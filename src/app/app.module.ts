@@ -2,6 +2,7 @@ import { HomeEventComponent } from './events-booking/home-event/home-event.compo
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ToolComponent } from './tool/tool.component';
@@ -19,7 +20,17 @@ import { SellComponent } from './sell/sell.component';
 import { ShopCompComponent } from './shop-comp/shop-comp.component';
 import { ListePanierCompComponent } from './liste-panier-comp/liste-panier-comp.component';
 import { CommandeDetailsCompComponent } from './commande-details-comp/commande-details-comp.component';
-import { EventeComponent } from './events-booking/evente/evente.component';
+
+import { BookEventComponent } from './events-booking/book-event/book-event.component';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ForumCompComponent } from './forum-comp/forum-comp.component';
+import { SharestoryComponent } from './sharestory/sharestory.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PanelModule} from 'primeng/panel';
+import {EditorModule} from 'primeng/editor';
+import { DetailthreadComponent } from './detailthread/detailthread.component';
+
 
 const ROUTES: Routes = [
     {path: 'shop', component: ShopCompComponent},
@@ -34,6 +45,13 @@ const ROUTES: Routes = [
     {path: 'mesCommandes', component: ListePanierCompComponent},
     {path: 'commandeDetails/:id', component: CommandeDetailsCompComponent},
     {path: 'event', component: HomeEventComponent},
+    {path: 'book', component: BookEventComponent},
+    {path: 'forum', component: ForumCompComponent},
+    {path: 'book/:id', component: BookEventComponent},
+    {path: 'sharestory', component: SharestoryComponent},
+    {path: 'detailthread/:id', component: DetailthreadComponent}
+
+
 
 ];
 
@@ -47,21 +65,29 @@ const ROUTES: Routes = [
     PanierProductsComponent,
     LoginComponent,
     RegisterComponent,
-    BuySellComponent,
+    BuySellComponent, 
     BuyComponent,
     SellComponent,
     HomeEventComponent,
     ShopCompComponent,
     ListePanierCompComponent,
     CommandeDetailsCompComponent,
-    EventeComponent,
+    BookEventComponent,
+    ForumCompComponent,
+    BookEventComponent,
+    SharestoryComponent,
+    DetailthreadComponent
     
   ],
   imports: [
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
-      HttpClientModule
+      HttpClientModule,
+      Ng2SearchPipeModule,
+      BrowserAnimationsModule,
+      PanelModule,
+      EditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-import { EventService } from '../../event.service';
+import { EventService } from '../../service/event.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -13,12 +13,14 @@ export class HomeEventComponent implements OnInit {
 ngOnInit() {
     this.loadEvents();
 }
+
   // Get event list
   loadEvents() {
       return this.eventService.getEvents().subscribe((data: Event[]) => {
           this.events = data;
           console.log('*********************');
-          console.log(this.events);
+          console.log(this.events.nom);
       });
   }
+  
 }
