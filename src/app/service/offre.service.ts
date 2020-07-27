@@ -3,7 +3,6 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Buy} from '../Model/buy';
-import {Produit} from '../Model/produit';
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {DemandeService} from '../service/demande.service';
+import {OffreService} from '../service/offre.service';
 import {Router} from '@angular/router';
 import {Sell} from '../Model/sell';
+import {DemandeService} from '../service/demande.service';
 
 @Component({
   selector: 'app-sell',
@@ -9,20 +10,23 @@ import {Sell} from '../Model/sell';
   styleUrls: ['./sell.component.css']
 })
 export class SellComponent implements OnInit {
-  constructor(private offreService: DemandeService, public router: Router) { }
-  demandes: any = [];
+
+  constructor(private demandeService: DemandeService, public router: Router) { }
+  Demandes: any = [];
   categorie: string;
+
   ngOnInit() {
     this.loadOffres();
   }
+  // Get products list
   loadOffres() {
-    return this.offreService.getProducts().subscribe((data: {}) => {
-      this.demandes = data;
+    return this.demandeService.getProducts().subscribe((data: {}) => {
+      this.Demandes = data;
     });
   }
   deleteOffre(id) {
     if (window.confirm('Are you sure, you want to delete?')) {
-      this.offreService.deleteProduct(id).subscribe(data => {
+      this.demandeService.deleteProduct(id).subscribe(data => {
         this.loadOffres();
       });
     }
@@ -30,7 +34,5 @@ export class SellComponent implements OnInit {
 
   searchByCategorie(categorie) {
     this.categorie = categorie;
-}
-act(){
-}
+  }
 }

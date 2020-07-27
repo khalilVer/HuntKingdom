@@ -16,8 +16,6 @@ export class BuyComponent implements OnInit {
   constructor(private offreService: OffreService, public router: Router) { }
   Offres: any = [];
   categorie: string;
-  b: Array<Buy> = [];
-
 
   ngOnInit() {
     this.loadOffres();
@@ -39,10 +37,13 @@ export class BuyComponent implements OnInit {
   searchByCategorie(categorie) {
     this.categorie = categorie;
   }
-  generatePdf() {
+  generatePdf(id) {
     const documentDefinition = {content: 'Votre commande est bien enregitré! Merci pour votre confiance'};
     if (window.confirm('Voulez-vous confimer votre achat? ')) {
       pdfMake.createPdf(documentDefinition).download();
-    }
+
+      this.offreService.deleteProduct(id).subscribe(data => {
+        this.loadOffres();
+      }); }
   }
 }
