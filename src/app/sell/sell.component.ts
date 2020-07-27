@@ -12,7 +12,7 @@ import {DemandeService} from '../service/demande.service';
 export class SellComponent implements OnInit {
 
   constructor(private demandeService: DemandeService, public router: Router) { }
-  Demandes: any = [];
+  demandes: any = [];
   categorie: string;
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class SellComponent implements OnInit {
   // Get products list
   loadOffres() {
     return this.demandeService.getProducts().subscribe((data: {}) => {
-      this.Demandes = data;
+      this.demandes = data;
     });
   }
   deleteOffre(id) {
