@@ -7,6 +7,7 @@ import { Overwatch } from '../Model/overwatch';
 import { notification } from '../Model/notification';
 import { threaddetail } from '../Model/threaddetail';
 import { report } from '../Model/report';
+import { vote } from '../Model/vote';
 
 
 
@@ -114,12 +115,32 @@ export class ForumServiceService {
             );
     }
 
-    checkVote(user,threadid): Observable<Thread> {
-        return null;
+    checkVote(user, threadid): Observable<vote> {
+        return this.http.get<vote>(this.apiURL + '/checkvote/' + threadid + '/' + user)
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
     }
 
+    addVote(vote): Observable<vote> {
+        return this.http.post<vote>(this.apiURL + '/addvote/new', JSON.stringify(vote), this.httpOptions);
+    }
 
-    checkThreadReport(user,threadid,subjecttype): Observable<report> {
+    updateVote(vote): Observable<vote> {
+        return this.http.post<vote>(this.apiURL + '/updatevote/' + vote.threadid + '/' + vote.userid + '/' + vote.vote, JSON.stringify(vote), this.httpOptions);
+    }
+
+    addLikes(vote, threadid) {
+        return this.http.get<vote>(this.apiURL + '/updatelikes/' + threadid + '/' + vote )
+            .pipe(
+                retry(1),
+                catchError(this.handleError)
+            );
+
+    }
+
+    checkThreadReport(user, threadid, subjecttype): Observable<report> {
         return this.http.get<report>(this.apiURL + '/checkreport/' + threadid + '/' + user + '/' + subjecttype)
             .pipe(
                 retry(1),

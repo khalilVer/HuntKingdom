@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumServiceService } from '../service/forum-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { notification } from '../Model/notification';
-import { threaddetail } from '../Model/threaddetail';
+import { ForumServiceService } from '../service/forum-service.service';
 
 @Component({
   selector: 'app-detailthread',
@@ -13,14 +12,17 @@ export class DetailthreadComponent implements OnInit {
 
   id = this.actRoute.snapshot.params['id'];
   Threadreport: any = [];
+  threadVote: any = [];
   thread: any = {};
   comments: any = [];
   comment = { threadid: '', comment: '', writer: 'gslema', upvote: '0', downvote: '0' };
   report = { type: '', reason: '', subject_id: '', report_nb: '1', userid: '' };
+  uservote = { userid: '', threadid: '', vote: '' };
   alreadyReported: string;
-  alreadyVoted: boolean = false;
+  alreadyVoted: string = '';
+  like: string = '';
   currentuser: any = 'aahmed';
-  tempcheck : string;
+  test: string = 'false';
 
   userrep = { subject: '', user: '', subjectid: '' };
 
@@ -29,11 +31,11 @@ export class DetailthreadComponent implements OnInit {
 
   ngOnInit() {
 
-
-    this.checkThreadReport();
     this.checkVote();
+    this.checkThreadReport();
     this.loadThread();
     this.loadComments();
+    console.log('the like', this.like);
 
   }
 
@@ -70,26 +72,53 @@ export class DetailthreadComponent implements OnInit {
     }
   }
 
-  checkVote() {
-    this.threadService.getThread(this.id).subscribe((data) => {
-      this.thread = data;
+  addVote(vote) {
 
+    this.uservote.vote = vote;
+    this.uservote.threadid = this.id;
+    this.uservote.userid = this.currentuser;
+    if (this.alreadyVoted == 'false') {
+      this.threadService.addLikes(vote, this.id).subscribe();
+      this.threadService.addVote(this.uservote).subscribe((data) => {
+        this.ngOnInit();
+      });
+
+    }
+    else {
+      this.threadService.addLikes(vote, this.id).subscribe();
+      this.threadService.updateVote(this.uservote).subscribe((data) => {
+        this.ngOnInit();
+      });
+
+    }
+
+  }
+
+  checkVote() {
+    this.threadService.checkVote(this.currentuser, this.id).subscribe((data) => {
+      this.threadVote = data;
+      console.log('vote : ', this.threadVote[0]);
+      if (this.threadVote[0] != undefined) {
+        this.alreadyVoted = 'true';
+        this.like = this.threadVote[0].vote;
+        return true;
+      }
+      else {
+        this.alreadyVoted = 'false';
+        return false;
+      }
     });
   }
 
   checkThreadReport() {
     this.threadService.checkThreadReport(this.currentuser, this.id, 'Thread').subscribe((data: {}) => {
       this.Threadreport = data;
-      console.log('data : ', this.Threadreport[0]);
       if (this.Threadreport[0] != undefined) {
         this.alreadyReported = 'true';
       }
       else {
         this.alreadyReported = 'false';
       }
-
-      console.log('reported :', this.alreadyReported);
-
     });
   }
 
