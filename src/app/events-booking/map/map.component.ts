@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {  AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { EventService } from '../../service/event.service';
 import { Event } from 'src/app/Model/event';
@@ -13,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./map.component.css']
 })
 
-  export class MapComponent implements AfterViewInit {
+  export class MapComponent implements OnInit {
     map;
     events : any = [];
   
@@ -44,9 +43,7 @@ import {ActivatedRoute, Router} from '@angular/router';
     
     
   
-    ngAfterViewInit(): void {
-      // this.createMap();
-    }
+    
 
     loadEvents( id : number) {
       return this.eventService.getEvents().subscribe(data => {
@@ -87,9 +84,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 
     mainLayer.addTo(this.map);
     const descriptionWikipedia = `
-      Le parc du Thabor, situé à Rennes à proximité du centre-ville,
-      est un parc public aménagé sur plus de dix hectares dont la particularité est de mêler un jardin à la française,
-      un jardin à l’anglaise et un important jardin botanique.`;
+    This is the Location of ur Event .
+    We are waiting You `;
     const popupOptions = {
       coords: parcThabor,
       text: descriptionWikipedia,
