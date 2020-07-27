@@ -74,7 +74,8 @@ const ROUTES: Routes = [
     SharestoryComponent,
     DetailthreadComponent,
     MapComponent,
-    WelcomeBookComponent
+    WelcomeBookComponent,
+    FilterPipe
   ],
   imports: [
       BrowserModule,
@@ -82,9 +83,11 @@ const ROUTES: Routes = [
       RouterModule.forRoot(ROUTES, {onSameUrlNavigation: 'reload'}),
       HttpClientModule,
       Ng2SearchPipeModule,
+      
       BrowserAnimationsModule,
       PanelModule,
       EditorModule,
+     
   ],
   providers: [],
   bootstrap: [AppComponent],
