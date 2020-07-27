@@ -61,8 +61,7 @@ const ROUTES: Routes = [
     BookEventComponent,
     MapComponent,
     WelcomeBookComponent,
-    FilterPipe,
-   
+
   ],
   imports: [
       BrowserModule,
