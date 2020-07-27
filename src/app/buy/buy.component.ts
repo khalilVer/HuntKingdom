@@ -46,4 +46,10 @@ export class BuyComponent implements OnInit {
         this.loadOffres();
       }); }
   }
+  checkConnected(): boolean {
+    if (localStorage.length !== 0) {
+      return false;
+    }
+    return true;
+  }
 }
