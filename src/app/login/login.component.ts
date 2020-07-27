@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
               this.gotoList();
           } else {
               this.connected = false;
+              window.alert('Please verify your login/password combination');
           }
       });
   }

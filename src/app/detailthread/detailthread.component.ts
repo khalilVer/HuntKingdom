@@ -15,27 +15,35 @@ export class DetailthreadComponent implements OnInit {
   threadVote: any = [];
   thread: any = {};
   comments: any = [];
-  comment = { threadid: '', comment: '', writer: 'gslema', upvote: '0', downvote: '0' };
+  comment = { threadid: '', comment: '', writer: localStorage.getItem('username'), upvote: '0', downvote: '0' };
   report = { type: '', reason: '', subject_id: '', report_nb: '1', userid: '' };
   uservote = { userid: '', threadid: '', vote: '' };
   alreadyReported: string;
   alreadyVoted: string = '';
   like: string = '';
-  currentuser: any = 'aahmed';
+  currentuser: any = '';
   test: string = 'false';
 
   userrep = { subject: '', user: '', subjectid: '' };
+  username: string;
+  connected: boolean;
 
 
   constructor(public actRoute: ActivatedRoute, private threadService: ForumServiceService, public router: Router) { }
 
   ngOnInit() {
+    this.currentuser = localStorage.getItem('username');
+     if (localStorage.length === 0) {
+    this.connected = false;
+  } else {
+    this.connected = true;
+  }
+  console.log('username',this.currentuser);
 
     this.checkVote();
     this.checkThreadReport();
     this.loadThread();
     this.loadComments();
-    console.log('the like', this.like);
 
   }
 
